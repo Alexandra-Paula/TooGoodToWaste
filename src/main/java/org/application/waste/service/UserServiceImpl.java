@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -22,26 +23,16 @@ public class UserServiceImpl implements UserService{
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User register(UserRegisterDto dto) {
-
-
-        User user = new User();
-        user.setUsername(dto.getUsername());
-        user.setEmail(dto.getEmail());
-        user.setPassword(passwordEncoder.encode(dto.getPassword()));
-
-        return userRepository.save(user);
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     @Override
-    public User findByEmail(String email) {
-        return null;
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 
-    @Override
-    public User findByUsername(String username) {
-        return null;
-    }
 
     @Override
     public void saveUser(UserRegisterDto userRegisterDto) {
