@@ -19,7 +19,6 @@ public class RegisterController {
     @Autowired
     public UserServiceImpl userService;
 
-
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("userDto", new UserRegisterDto());
