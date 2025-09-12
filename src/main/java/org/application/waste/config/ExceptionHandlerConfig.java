@@ -87,4 +87,15 @@ public class ExceptionHandlerConfig {
 
         return ResponseEntity.status(unauthorizedException.getStatus()).body(map);
     }
+
+    @ExceptionHandler(InvalidFileException.class)
+    private ResponseEntity<Object> invalidFileException(InvalidFileException invalidFileException) {
+        Map<String, String> map = new HashMap<>();
+
+        map.put("timestamp", Instant.now().toString());
+        map.put("message", invalidFileException.getMessage());
+        map.put("status", invalidFileException.getStatus().toString());
+
+        return ResponseEntity.status(invalidFileException.getStatus()).body(map);
+    }
 }
