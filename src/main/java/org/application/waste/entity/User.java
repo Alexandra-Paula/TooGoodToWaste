@@ -33,6 +33,8 @@ public class User {
     @Column
     private LocalDateTime deleteDate= null;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ProductLink productLink;
 
 
 }
