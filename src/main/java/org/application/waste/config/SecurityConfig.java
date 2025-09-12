@@ -31,7 +31,9 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http,
+                                           CustomLoginFailureHandler failureHandler,
+                                           CustomLoginSuccessHandler successHandler) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
                         authorize
@@ -45,18 +47,11 @@ public class SecurityConfig {
                 .formLogin(
                         form -> form
                                 .loginPage("/login")
-                                .defaultSuccessUrl("/index", true)
-                                .failureHandler((request, response, exception) -> {
-                                    // Mesaj generic pentru toate erorile de autentificare
-                                    String errorMessage = "Nume de utilizator sau parola incorectă";
-
-                                    // URL-encode pentru siguranță
-                                    errorMessage = URLEncoder.encode(errorMessage, StandardCharsets.UTF_8);
-
-                                    response.sendRedirect("/login?errorMessage=" + errorMessage);
-                                })
+                                .successHandler(successHandler)
+                                .failureHandler(failureHandler)
                                 .permitAll()
-                ).logout(
+                )
+                .logout(
                         logout -> logout
                                 .logoutUrl("/logout")
                                 .invalidateHttpSession(true)
@@ -64,9 +59,9 @@ public class SecurityConfig {
                                 .logoutSuccessUrl("/login?logout=true")
                                 .permitAll()
                 );
+
         return http.build();
     }
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -74,6 +69,3 @@ public class SecurityConfig {
                 .passwordEncoder(passwordEncoder());
     }
 }
-
-
-

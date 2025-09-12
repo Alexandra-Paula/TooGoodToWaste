@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
     <!-- Page Title -->
-    <title>Conectare</title>
+    <title>Conectare | TooGoodToWaste</title>
 
     <!-- Favicon Image -->
     <link rel="icon" type="image/png" th:href="@{/images/assets/favicon.svg}"/>
@@ -471,12 +471,14 @@
 </div>
 <!-- Banner Section End -->
 
+<!-- Sign in section  -->
+
 <section class="sign-in section section--xl">
     <div class="container">
         <div class="form-wrapper">
             <h6 class="font-title--sm">Conectează-te</h6>
             <!-- Mesaj de eroare -->
-            <div th:if="${param.errorMessage}" class="alert alert-danger" style="color:#000;">
+            <div th:if="${param.errorMessage}" id="loginError" class="alert alert-danger" style="color:#000;">
                 <span th:text="${param.errorMessage}"></span>
             </div>
             <!-- FORMULAR DE LOGIN -->
@@ -521,12 +523,6 @@
                 </div>
                 <!-- Remember Me + Forgot Password -->
                 <div class="form-wrapper__content">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember-me" id="remember"/>
-                        <label class="form-check-label" for="remember">
-                            Ține-mă minte
-                        </label>
-                    </div>
                     <a th:href="@{/forgot-password}">Ai uitat parola?</a>
                 </div>
 
@@ -560,5 +556,8 @@
 <script th:src="@{/lib/js/jquery.syotimer.min.js}"></script>
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{/js/home.js}"></script>
+
+
+<script th:src="@{/js/login-message.js}"></script>
 </body>
 </html>
