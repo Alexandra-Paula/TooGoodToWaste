@@ -2,13 +2,13 @@ package org.application.waste.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-
 public class UserRegisterDto {
 
     @NotBlank
@@ -20,10 +20,12 @@ public class UserRegisterDto {
     private String email;
 
     @NotBlank
-    @Size(min = 8, message = "Parola trebuie să aibă cel puțin 8 caractere")
+    @Pattern(
+            regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[#\\$%&'0*+,-/:<=>?@^_]).{8,}$",
+            message = "Parola trebuie să aibă minim 8 caractere și să conțină cel puțin: o literă mare, o literă mică, o cifră și un caracter special (#$%&'0*+,-/:<=>?@^_)"
+    )
     private String password;
 
     @NotBlank
     private String confirmPassword;
-
 }
