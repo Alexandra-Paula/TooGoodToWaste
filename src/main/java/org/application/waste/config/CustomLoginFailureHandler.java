@@ -38,7 +38,7 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
                     user.setFailedAttempts(newAttempts);
 
                     if (newAttempts >= 2) {
-                        user.setLockedUntil(LocalDateTime.now().plusMinutes(1));
+                        user.setLockedUntil(LocalDateTime.now().plusMinutes(10));
                     }
 
                     userRepository.save(user);
