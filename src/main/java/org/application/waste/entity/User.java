@@ -33,6 +33,13 @@ public class User {
     @Column
     private LocalDateTime deleteDate= null;
 
+    @Column(name = "failed_attempts")
+    private int failedAttempts = 0;
+
+    @Column(name = "locked_until")
+    private LocalDateTime lockedUntil;
+
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private ProductLink productLink;
 
