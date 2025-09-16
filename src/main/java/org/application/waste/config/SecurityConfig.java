@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class
+public class 
 SecurityConfig {
 
     private final UserDetailsService userDetailsService;
