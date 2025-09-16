@@ -5,6 +5,7 @@ import org.application.waste.entity.User;
 import org.application.waste.repository.UserRepository;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.Role;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -56,5 +57,17 @@ public class UserServiceImpl implements UserService{
     public boolean emailExists(String email) {
         return userRepository.existsByEmail(email);
     }
-
+    @Override
+    @Modifying
+    public void updatePassword(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+    }
+    @Override
+    public void checkNewPassword(User user, String newPassword) {
+        // Verifică dacă parola nouă coincide cu parola veche
+        if (passwordEncoder.matches(newPassword, user.getPassword())) {
+            throw new IllegalArgumentException("Parola noua trebuie sa fie diferita de cea anterioara");
+        }
+    }
 }
