@@ -40,7 +40,7 @@ SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/reset-password/**").permitAll()
                                 .requestMatchers(
                                         "/css/**", "/js/**", "/images/**", "/lib/**", "/scss/**",
-                                        "/index", "/login/**","/forgotPassword/**", "/reset-password/**"
+                                        "/index", "/login/**","/forgotPassword/**", "/reset-password/**", "/blog/**", "/chat"
                                 ).permitAll()
                                 .anyRequest().authenticated()
                 )
