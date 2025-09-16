@@ -604,7 +604,7 @@
 
           </p>
 
-          <form th:action="@{/contact}" method="post" th:object="${contactDto}">
+          <form th:action="@{/contact/submit}" method="post" th:object="${contactDto}">
             <input type="hidden" th:if="${_csrf != null}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             <div class="contact-form-group">
               <div class="contact-form--input">
