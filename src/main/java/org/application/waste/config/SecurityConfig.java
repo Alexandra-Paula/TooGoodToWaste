@@ -36,7 +36,7 @@ SecurityConfig {
                                 .requestMatchers("/register/**").not().authenticated()
                                 .requestMatchers(
                                         "/css/**", "/js/**", "/images/**", "/lib/**", "/scss/**",
-                                        "/index", "/login/**"
+                                        "/index", "/login/**", "/blog**"
                                 ).permitAll()
                                 .anyRequest().authenticated()
                 )
