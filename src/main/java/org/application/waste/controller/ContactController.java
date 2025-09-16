@@ -39,12 +39,22 @@ public class ContactController {
             Authentication authentication
     ) {
         if (result.hasErrors()) {
+            String errorMsg;
+
+            if (result.hasFieldErrors("email")) {
+                errorMsg = result.getFieldError("email").getDefaultMessage();
+            } else if (result.hasFieldErrors("message")) {
+                errorMsg = result.getFieldError("message").getDefaultMessage();
+            } else {
+                errorMsg = "Date invalide sau incomplete. Repetați formularul!";
+            }
+
+            ra.addAttribute("error", errorMsg);
             ra.addFlashAttribute("org.springframework.validation.BindingResult.contactDto", result);
             ra.addFlashAttribute("contactDto", dto);
             return "redirect:/contact";
         }
 
-        // Rezolvă user-ul indiferent dacă principalul e email sau username.
         User currentUser = null;
         if (authentication != null && authentication.isAuthenticated()
                 && !"anonymousUser".equals(String.valueOf(authentication.getPrincipal()))) {
