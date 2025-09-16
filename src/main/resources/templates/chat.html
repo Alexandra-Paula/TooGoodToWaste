@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ro" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Asistent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon Image -->
+    <link rel="icon" type="image/png" th:href="@{/images/assets/favicon.svg}"/>
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" th:href="@{/css/assistant.css}">
+</head>
+
+<body>
+<!-- Navbar Start -->
+<nav class="navbar">
+    <h3 class="navbar__logo">Asistentul tău AI pentru cumpărături sustenabile</h3>
+</nav>
+<!-- Navbar End -->
+
+<!-- Header Start -->
+<header class="header">
+    <div class="header__title">
+        <h1>Bună !</h1>
+        <h2>Cu ce te pot ajuta astăzi ?</h2>
+    </div>
+    <div class="suggests">
+        <div class="suggests__item">
+            <p class="suggests__item-text">
+                Care sunt beneficiile cumpărării produselor eco-friendly ?
+            </p>
+            <div class="suggests__item-icon">
+                <i class='bx bx-leaf'></i>
+            </div>
+        </div>
+        <div class="suggests__item">
+            <p class="suggests__item-text">
+                Care este scopul aplicației și cum ajută la reducerea risipei alimentare ?
+            </p>
+            <div class="suggests__item-icon">
+                <i class='bx bx-upload'></i>
+            </div>
+        </div>
+        <div class="suggests__item">
+            <p class="suggests__item-text">
+                Care sunt produsele disponibile cu reducere de 60% ?
+            </p>
+            <div class="suggests__item-icon">
+                <i class='bx bx-box'></i>
+            </div>
+        </div>
+        <div class="suggests__item">
+            <p class="suggests__item-text">
+                Ce produse îmi recomanzi să cumpăr astăzi pentru a evita risipa ?
+            </p>
+            <div class="suggests__item-icon">
+                <i class='bx bx-store-alt'></i>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header End -->
+
+<!-- Chat Section -->
+<section class="chats"></section>
+
+<!-- Input Prompt Start -->
+<section class="prompt">
+    <form action="#" class="prompt__form" novalidate>
+        <div class="prompt__input-wrapper">
+            <input type="text" placeholder="Scrie întrebarea ta aici" class="prompt__form-input" required>
+            <button class="prompt__form-button" id="sendButton">
+                <i class='bx bx-send'></i>
+            </button>
+            <button class="prompt__form-button" id="deleteButton">
+                <i class='bx bx-trash'></i>
+            </button>
+        </div>
+    </form>
+    <p class="prompt__disclaim">
+        Răspunsurile pot să nu fie întotdeauna pe deplin corecte sau actualizate, te rugăm să verifici informațiile importante.
+    </p>
+</section>
+<!-- Input Prompt End -->
+
+<!-- JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="../../../../../Desktop/Day%20%2378%20-%20Google%20Gemini%20Clone/script.js"></script>
+</body>
+
+</html>
