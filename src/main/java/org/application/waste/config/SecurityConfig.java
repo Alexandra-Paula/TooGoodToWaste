@@ -7,18 +7,15 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class 
+SecurityConfig {
+
     private final UserDetailsService userDetailsService;
 
     public SecurityConfig(UserDetailsService userDetailsService) {
@@ -38,9 +35,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) ->
                         authorize
                                 .requestMatchers("/register/**").not().authenticated()
+                                .requestMatchers("/forgotPassword/**").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/reset-password/**").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/reset-password/**").permitAll()
                                 .requestMatchers(
                                         "/css/**", "/js/**", "/images/**", "/lib/**", "/scss/**",
-                                        "/index", "/login/**"
+                                        "/index", "/login/**","/forgotPassword/**", "/reset-password/**", "/blog/**", "/chat"
                                 ).permitAll()
                                 .anyRequest().authenticated()
                 )
@@ -62,6 +62,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth

@@ -3,22 +3,21 @@ package org.application.waste.config;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.application.waste.service.LoginAttemptService;
+import org.application.waste.entity.User;
+import org.application.waste.repository.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
 @Component
 public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
-    private final LoginAttemptService loginAttemptService;
+    private final UserRepository userRepository;
 
-    public CustomLoginSuccessHandler(LoginAttemptService loginAttemptService) {
-        this.loginAttemptService = loginAttemptService;
+    public CustomLoginSuccessHandler(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -27,17 +26,15 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
                                         Authentication authentication)
             throws IOException, ServletException {
 
-        // Verificăm dacă loginul este blocat
-        if (loginAttemptService.isBlocked()) {
-            String errorMessage = URLEncoder.encode(
-                    "Ai depășit numărul de încercări. Încearcă din nou peste 10 minute.",
-                    StandardCharsets.UTF_8);
-            response.sendRedirect("/login?errorMessage=" + errorMessage);
-            return;
-        }
+        String username = authentication.getName();
 
-        // Resetăm încercările la login reușit
-        loginAttemptService.loginSucceeded();
+        userRepository.findByUsername(username)
+                .or(() -> userRepository.findByEmail(username))
+                .ifPresent(user -> {
+                    user.setFailedAttempts(0);
+                    user.setLockedUntil(null);
+                    userRepository.save(user);
+                });
 
         response.sendRedirect("/index");
     }

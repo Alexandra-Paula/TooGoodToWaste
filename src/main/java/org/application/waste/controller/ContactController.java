@@ -7,7 +7,6 @@ import org.application.waste.entity.User;
 import org.application.waste.service.ContactService;
 import org.application.waste.service.UserService;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,28 +28,35 @@ public class ContactController {
             model.addAttribute("contactDto", new ContactFormDto());
         }
         model.addAttribute("page", "contact");
-        return "contact"; // caută templates/contact.html
+        return "contact";
     }
 
-    @PostMapping("/contact")
+    @PostMapping("/contact/submit")
     public String submitContact(
             @Valid @ModelAttribute("contactDto") ContactFormDto dto,
             BindingResult result,
-            RedirectAttributes ra
+            RedirectAttributes ra,
+            Authentication authentication
     ) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findByEmail(authentication.getName());
-
         if (result.hasErrors()) {
-
             ra.addFlashAttribute("org.springframework.validation.BindingResult.contactDto", result);
             ra.addFlashAttribute("contactDto", dto);
             return "redirect:/contact";
         }
 
-        contactService.handleContactForm(dto);
+        // Rezolvă user-ul indiferent dacă principalul e email sau username.
+        User currentUser = null;
+        if (authentication != null && authentication.isAuthenticated()
+                && !"anonymousUser".equals(String.valueOf(authentication.getPrincipal()))) {
+
+            String principal = authentication.getName(); // de obicei username
+            currentUser = userService.findByEmail(principal).orElseGet(() ->
+                    userService.findByUsername(principal).orElse(null)
+            );
+        }
+
+        contactService.handleContactForm(dto, currentUser);
         ra.addFlashAttribute("successMessage", "Mulțumim! Mesajul tău a fost trimis.");
         return "redirect:/contact?success";
     }
-
 }

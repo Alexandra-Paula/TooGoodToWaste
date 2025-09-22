@@ -21,11 +21,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
+        // Caută utilizatorul fie după username, fie după email
         User user = userRepository.findByUsername(usernameOrEmail)
                 .orElseGet(() -> userRepository.findByEmail(usernameOrEmail)
                         .orElseThrow(() -> new UsernameNotFoundException("User not found: " + usernameOrEmail)));
 
-        // Verificare blocare
+        // Verifică dacă este blocat
+        if (user.getLockedUntil() != null && LocalDateTime.now().isBefore(user.getLockedUntil())) {
+            throw new LockedException("Contul este blocat până la " + user.getLockedUntil());
+        }
+
+        // Returnează UserDetails personalizat
         return new CustomUserDetails(user);
     }
 }

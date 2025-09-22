@@ -37,8 +37,8 @@ public class ContactMessage {
 
     public enum Status { NEW, READ, ANSWERED }
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
 }
