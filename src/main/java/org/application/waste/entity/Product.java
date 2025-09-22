@@ -7,9 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.application.waste.enums.Availability;
+import org.application.waste.enums.AvailabilityConverter;
 import org.application.waste.enums.RecommendationStatus;
+import org.application.waste.enums.RecommendationStatusConverter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -34,6 +37,9 @@ public class Product {
     @JoinColumn(name = "product_file_id")
     private ProductLink productLink;
 
+    @OneToMany(mappedBy = "product")
+    private List<Review> reviews;
+
     @NotBlank
     @Size(min = 5, max = 80)
     @Column(name = "name", nullable = false, length = 80)
@@ -55,15 +61,19 @@ public class Product {
 
     @NotBlank
     @DecimalMin(value = "0.0")
-    @Column(name = "price", nullable = false)
-    private double price;
+    @Column(name = "initial_price", nullable = false)
+    private double initialPrice;
+
+    @NotBlank
+    @DecimalMin(value = "0.0")
+    @Column(name = "final_price", nullable = false)
+    private double finalPrice;
 
     @NotBlank
     @Size(min = 10)
     @Column(name = "description", nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @NotBlank
     @PastOrPresent
     @Column(name = "date_posted", nullable = false)
     private LocalDateTime datePosted;
@@ -82,13 +92,11 @@ public class Product {
     @Column(name = "unit", nullable = false, length = 80)
     private String unit;
 
-    @NotBlank
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = AvailabilityConverter.class)
     @Column(name = "availability", nullable = false)
     private Availability availability;
 
-    @NotBlank
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = RecommendationStatusConverter.class)
     @Column(name = "recommendation_status", nullable = false)
     private RecommendationStatus recommendationStatus;
 
@@ -102,6 +110,6 @@ public class Product {
     @Column(name = "company_image", nullable = false)
     private String companyImage;
 
-    @Column(name = "is_deleted")
-    private LocalDateTime isDeleted = null;
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt = null;
 }

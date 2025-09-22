@@ -84,11 +84,16 @@ if (document.getElementById('selectbox2')) {
 }
 
 if (document.getElementById('sort')) {
+    var selectElem = document.getElementById('sort');
+    var placeholderText = 'Sortează';
+
+    var initialText = selectElem.value ? selectElem.options[selectElem.selectedIndex].text : placeholderText;
+
     var demo3 = new BVSelect({
         selector: '#sort',
         searchbox: false,
         offset: false,
-        placeholder: 'Latest',
+        placeholder: initialText,
     });
 }
 
@@ -124,7 +129,7 @@ if (document.getElementById('category')) {
         selector: '#category',
         searchbox: false,
         offset: false,
-        placeholder: 'Select Catecory',
+        placeholder: 'Select Category',
     });
 }
 
@@ -340,19 +345,41 @@ if (filterBtn) {
 /*
     11. Range Slider
 ======================== */
-var range = document.getElementById('priceRangeSlider');
+document.addEventListener('DOMContentLoaded', function() {
+    var range = document.getElementById('priceRangeSlider');
+    var filterBtn = document.getElementById('filterPriceBtn');
+    var shopData = document.getElementById('shop-data');
 
-if (range) {
-    noUiSlider.create(range, {
-        start: [20, 80],
-        connect: true,
-        range: {
-            min: 0,
-            max: 1500,
-        },
-        tooltips: true,
-    });
-}
+    var minPriceInitial = shopData.dataset.minPrice ? parseFloat(shopData.dataset.minPrice) : 0;
+    var maxPriceInitial = shopData.dataset.maxPrice ? parseFloat(shopData.dataset.maxPrice) : 1500;
+
+    if (range) {
+        noUiSlider.create(range, {
+            start: [minPriceInitial, maxPriceInitial],
+            connect: true,
+            range: { min: 0, max: 500 },
+            tooltips: true
+        });
+    }
+
+    if (filterBtn && range) {
+        filterBtn.addEventListener('click', function() {
+            var values = range.noUiSlider.get();
+            var minPrice = parseFloat(values[0]);
+            var maxPrice = parseFloat(values[1]);
+
+            var category = shopData.dataset.categoryId || '';
+            var sortOption = shopData.dataset.sortOption || '';
+            var ratingCategory = shopData.dataset.ratingCategory || '';
+            var tag = shopData.dataset.tag || '';
+
+            var url = `/shop?minPrice=${minPrice}&maxPrice=${maxPrice}` +
+                `&category=${category}&sortOption=${sortOption}&ratingCategory=${ratingCategory}&tag=${tag}`;
+
+            window.location.href = url;
+        });
+    }
+});
 
 /*
     12. Lightbox Plugin

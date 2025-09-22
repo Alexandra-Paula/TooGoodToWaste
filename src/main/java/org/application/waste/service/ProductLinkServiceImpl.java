@@ -46,10 +46,10 @@ public class ProductLinkServiceImpl implements ProductLinkService {
     @Override
     public void saveProductsFromLink(String fileUrl, Long userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new NotFoundException("Unable to find this user"));
+                .orElseThrow(() -> new NotFoundException("Nu s-a putut găsi acest utilizator"));
 
         if (user.getProductLink() != null) {
-            throw new InvalidFileException("A user can have only one saved link, already exists");
+            throw new InvalidFileException("Utilizatorul poate avea un singur link salvat, acesta există deja");
         }
 
         Path uploadPath = Paths.get(UPLOAD_DIR);
@@ -92,7 +92,7 @@ public class ProductLinkServiceImpl implements ProductLinkService {
             String lowerFileName = fileName.toLowerCase();
             if (!(lowerFileName.endsWith(".csv") || lowerFileName.endsWith(".xls") || lowerFileName.endsWith(".xlsx"))) {
                 Files.deleteIfExists(targetLocation);
-                throw new InvalidFileException("You can only upload CSV or Excel files (.csv, .xls, .xlsx)");
+                throw new InvalidFileException("Sunt acceptate doar fișiere CSV sau Excel (.csv, .xls, .xlsx)");
             }
 
             ProductLink productLink = new ProductLink();
@@ -126,12 +126,13 @@ public class ProductLinkServiceImpl implements ProductLinkService {
                     String pickupAddress = getCellAsString(row.getCell(4)) != null && !getCellAsString(row.getCell(4)).isEmpty() ? getCellAsString(row.getCell(4)) : "";
                     int quantity = getCellAsString(row.getCell(5)) != null && !getCellAsString(row.getCell(5)).isEmpty() ? (int) Double.parseDouble(getCellAsString(row.getCell(5))) : 0;
                     String quality = getCellAsString(row.getCell(6)) != null && !getCellAsString(row.getCell(6)).isEmpty() ? getCellAsString(row.getCell(6)) : "";
-                    double price = getCellAsString(row.getCell(7)) != null && !getCellAsString(row.getCell(7)).isEmpty() ? Double.parseDouble(getCellAsString(row.getCell(7))) : 0.0;
-                    String description = getCellAsString(row.getCell(8)) != null && !getCellAsString(row.getCell(8)).isEmpty() ? getCellAsString(row.getCell(8)) : "";
-                    String productCode = getCellAsString(row.getCell(9)) != null && !getCellAsString(row.getCell(9)).isEmpty() ? getCellAsString(row.getCell(9)) : "";
-                    String productUnit = getCellAsString(row.getCell(10)) != null && !getCellAsString(row.getCell(10)).isEmpty() ? getCellAsString(row.getCell(10)) : "";
-                    String productImagePath = getCellAsString(row.getCell(11)) != null && !getCellAsString(row.getCell(11)).isEmpty() ? getCellAsString(row.getCell(11)) : "";
-                    String companyImagePath = getCellAsString(row.getCell(12)) != null && !getCellAsString(row.getCell(12)).isEmpty() ? getCellAsString(row.getCell(12)) : "";
+                    double initialPrice = getCellAsString(row.getCell(7)) != null && !getCellAsString(row.getCell(7)).isEmpty() ? Double.parseDouble(getCellAsString(row.getCell(7))) : 0.0;
+                    double finalPrice = getCellAsString(row.getCell(8)) != null && !getCellAsString(row.getCell(8)).isEmpty() ? Double.parseDouble(getCellAsString(row.getCell(8))) : 0.0;
+                    String description = getCellAsString(row.getCell(9)) != null && !getCellAsString(row.getCell(9)).isEmpty() ? getCellAsString(row.getCell(9)) : "";
+                    String productCode = getCellAsString(row.getCell(10)) != null && !getCellAsString(row.getCell(10)).isEmpty() ? getCellAsString(row.getCell(10)) : "";
+                    String productUnit = getCellAsString(row.getCell(11)) != null && !getCellAsString(row.getCell(11)).isEmpty() ? getCellAsString(row.getCell(11)) : "";
+                    String productImagePath = getCellAsString(row.getCell(12)) != null && !getCellAsString(row.getCell(12)).isEmpty() ? getCellAsString(row.getCell(12)) : "";
+                    String companyImagePath = getCellAsString(row.getCell(13)) != null && !getCellAsString(row.getCell(13)).isEmpty() ? getCellAsString(row.getCell(13)) : "";
 
                     Product product = productService.findByCode(productCode).orElse(new Product());
                     product.setProductLink(productLink);
@@ -187,8 +188,13 @@ public class ProductLinkServiceImpl implements ProductLinkService {
                         updated = true;
                     }
 
-                    if (Double.compare(product.getPrice(), price) != 0) {
-                        product.setPrice(price);
+                    if (Double.compare(product.getInitialPrice(), initialPrice) != 0) {
+                        product.setInitialPrice(initialPrice);
+                        updated = true;
+                    }
+
+                    if (Double.compare(product.getFinalPrice(), finalPrice) != 0) {
+                        product.setFinalPrice(finalPrice);
                         updated = true;
                     }
 
@@ -242,13 +248,13 @@ public class ProductLinkServiceImpl implements ProductLinkService {
                 productService.deleteByCodes(remainingCodes);
             }
         } catch (IOException e) {
-            throw new RuntimeException("Could not download or read Excel file");
+            throw new RuntimeException("Nu s-a putut descărca sau citi fișierul Excel");
         } finally {
             if (targetLocation != null && Files.exists(targetLocation)) {
                 try {
                     Files.delete(targetLocation);
                 } catch (IOException ex) {
-                    System.err.println("Could not delete this file");
+                    System.err.println("Nu s-a putut șterge acest fișier");
                 }
             }
 
@@ -257,7 +263,7 @@ public class ProductLinkServiceImpl implements ProductLinkService {
                     Files.delete(uploadPath);
                 }
             } catch (IOException ex) {
-                System.err.println("Could not delete this folder");
+                System.err.println("Nu s-a putut șterge acest dosar");
             }
         }
     }
