@@ -1,7 +1,6 @@
 package org.application.waste.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,55 +39,36 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Review> reviews;
 
-    @NotBlank
-    @Size(min = 5, max = 80)
     @Column(name = "name", nullable = false, length = 80)
     private String name;
 
-    @NotBlank
-    @Size(min = 10, max = 80)
     @Column(name = "pickupAddress", nullable = false, length = 80)
     private String pickupAddress;
 
-    @Min(value = 0)
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
-    @NotBlank
-    @Size(min = 5, max = 80)
     @Column(name = "quality", nullable = false, length = 80)
     private String quality;
 
-    @NotBlank
-    @DecimalMin(value = "0.0")
     @Column(name = "initial_price", nullable = false)
     private double initialPrice;
 
-    @NotBlank
-    @DecimalMin(value = "0.0")
     @Column(name = "final_price", nullable = false)
     private double finalPrice;
 
-    @NotBlank
-    @Size(min = 10)
     @Column(name = "description", nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @PastOrPresent
     @Column(name = "date_posted", nullable = false)
     private LocalDateTime datePosted;
 
-    @NotBlank
     @Column(name = "rating", nullable = false)
     private int rating;
 
-    @NotBlank
-    @Size(min = 5, max = 80)
     @Column(name = "code", nullable = false, length = 80, unique = true)
     private String code;
 
-    @NotBlank
-    @Size(min = 4, max = 80)
     @Column(name = "unit", nullable = false, length = 80)
     private String unit;
 
@@ -100,13 +80,9 @@ public class Product {
     @Column(name = "recommendation_status", nullable = false)
     private RecommendationStatus recommendationStatus;
 
-    @NotBlank
-    @Size(min = 4, max = 80)
     @Column(name = "product_image", nullable = false)
     private String productImage;
 
-    @NotBlank
-    @Size(min = 4, max = 80)
     @Column(name = "company_image", nullable = false)
     private String companyImage;
 

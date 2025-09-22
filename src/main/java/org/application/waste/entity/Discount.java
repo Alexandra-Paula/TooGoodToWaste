@@ -1,9 +1,6 @@
 package org.application.waste.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.FutureOrPresent;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,13 +19,9 @@ public class Discount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @DecimalMin(value = "0.0")
     @Column(name = "percent", nullable = false)
     private double percent;
 
-    @NotNull
-    @FutureOrPresent
     @Column(name = "expiry_date", nullable = false)
     private LocalDateTime expiryDate;
 

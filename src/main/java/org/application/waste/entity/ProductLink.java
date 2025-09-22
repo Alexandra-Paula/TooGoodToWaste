@@ -1,8 +1,6 @@
 package org.application.waste.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,11 +21,9 @@ public class ProductLink {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @Column(name = "original_link", nullable = false)
     private String originalLink;
 
-    @PastOrPresent
     @Column(name = "added_date", nullable = false)
     private LocalDateTime addedDate;
 
