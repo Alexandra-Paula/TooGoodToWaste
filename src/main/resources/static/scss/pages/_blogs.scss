@@ -33,7 +33,6 @@
         line-height: 21px;
         color: color(gray-5);
         font-weight: 400;
-        text-transform: capitalize;
         @include max(767px) {
           display: none;
         }

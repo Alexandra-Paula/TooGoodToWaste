@@ -5230,7 +5230,6 @@ body.overlay::after {
     line-height: 21px;
     color: #1a1a1a;
     font-weight: 400;
-    text-transform: capitalize;
 }
 
 .shop .categories-item .form-check-label .current {
@@ -6674,6 +6673,18 @@ body.overlay::after {
 .button--outline:hover {
     color: #2c742f;
     border-color: #2c742f;
+    background-color: transparent;
+}
+
+.button--out {
+    color:  #c0392b;
+    background-color: transparent;
+    border: 2px solid #c0392b;
+}
+
+.button--out:hover {
+    color: #732111;
+    border-color: #732111;
     background-color: transparent;
 }
 
@@ -11185,7 +11196,6 @@ body.overlay::after {
     line-height: 21px;
     color: #808080;
     font-weight: 400;
-    text-transform: capitalize;
     margin-right: 6px;
     flex-shrink: 0;
 }
@@ -11195,7 +11205,6 @@ body.overlay::after {
     line-height: 21px;
     color: #808080;
     font-weight: 400;
-    text-transform: capitalize;
 }
 
 @media (max-width: 767px) {
@@ -11752,7 +11761,6 @@ body.overlay::after {
     font-size: 14px;
     line-height: 21px;
     color: #1a1a1a;
-    text-transform: capitalize;
     font-weight: 500;
     margin-bottom: 6px;
 }
@@ -11761,7 +11769,6 @@ body.overlay::after {
     font-size: 13px;
     line-height: 19.5px;
     color: #808080;
-    text-transform: capitalize;
     font-weight: 400;
 }
 
@@ -11795,7 +11802,6 @@ body.overlay::after {
     line-height: 24px;
     color: #808080;
     font-weight: 500;
-    text-transform: capitalize;
     border-radius: 0px;
     background-color: transparent;
     border-bottom: 2px solid transparent;
