@@ -39,9 +39,6 @@ public class User {
     @Column(name = "locked_until")
     private LocalDateTime lockedUntil;
 
-
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private ProductLink productLink;
-
-
 }
