@@ -7,8 +7,6 @@ import org.application.waste.exceptions.NotFoundException;
 import org.application.waste.service.ProductLinkService;
 import org.application.waste.service.UserService;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,23 +14,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class ProductController {
+public class ProductLinkController {
     private final ProductLinkService productLinkService;
     private final UserService userService;
 
-    public ProductController(ProductLinkService productLinkService, UserService userService) {
+    public ProductLinkController(ProductLinkService productLinkService, UserService userService) {
         this.productLinkService = productLinkService;
         this.userService = userService;
     }
 
     @GetMapping("/upload")
-    public String showUploadPage(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findByEmail(authentication.getName())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    public String showUploadPage(Model model, Authentication authentication) {
+        User user = null;
+        if (authentication != null && authentication.isAuthenticated()
+                && !"anonymousUser".equals(String.valueOf(authentication.getPrincipal()))) {
+
+            String principal = authentication.getName();
+            user = userService.findByEmail(principal).orElseGet(() ->
+                    userService.findByUsername(principal).orElse(null)
+            );
+        }
+
+        if (user == null || user.getId() == null) {
+            return "redirect:/upload?error=Utilizator neautentificat";
+        }
 
         String existingLink = null;
-        if (user != null && user.getProductLink() != null) {
+        if (user.getProductLink() != null) {
             existingLink = user.getProductLink().getOriginalLink();
         }
 
@@ -43,20 +51,26 @@ public class ProductController {
     }
 
     @PostMapping("/upload/link")
-    public String handleFileUploadFromLink(@RequestParam("fileUrl") String fileUrl) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findByEmail(authentication.getName())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    public String handleFileUploadFromLink(@RequestParam("fileUrl") String fileUrl, Authentication authentication) {
+        User user = null;
+        if (authentication != null && authentication.isAuthenticated()
+                && !"anonymousUser".equals(String.valueOf(authentication.getPrincipal()))) {
+
+            String principal = authentication.getName();
+            user = userService.findByEmail(principal).orElseGet(() ->
+                    userService.findByUsername(principal).orElse(null)
+            );
+        }
 
         if (user == null || user.getId() == null) {
-            return "redirect:/upload?error=User not logged in";
+            return "redirect:/upload?error=Utilizator neautentificat";
         }
 
         try {
             productLinkService.saveProductsFromLink(fileUrl, user.getId());
-            return "redirect:/upload?success=File downloaded and saved successfully";
+            return "redirect:/upload?success=Fisierul a fost descarcat si salvat cu succes";
         } catch (FileTooLargeException | InvalidFileException | NotFoundException e) {
-            return "redirect:/upload?error=" + e.getMessage();
+            return "redirect:/upload?error=A aparut o eroare la incarcarea fisierului";
         }
     }
 }
