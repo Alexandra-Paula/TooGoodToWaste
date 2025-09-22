@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "users")
-
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,17 +32,6 @@ public class User {
     @Column
     private LocalDateTime deleteDate= null;
 
-    @Column(name = "failed_attempts")
-    private int failedAttempts = 0;
-
-    @Column(name = "locked_until")
-    private LocalDateTime lockedUntil;
-
-
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private ProductLink productLink;
-
-    @OneToMany(mappedBy = "user")
-    private List<Review> reviews;
-
 }
