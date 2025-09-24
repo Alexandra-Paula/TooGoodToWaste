@@ -12542,7 +12542,6 @@ body.overlay::after {
     letter-spacing: 0.03em;
     font-weight: 500;
     color: #808080;
-    text-transform: uppercase;
     padding: 16px 24px !important;
     border-color: #e5e5e5 !important;
 }
