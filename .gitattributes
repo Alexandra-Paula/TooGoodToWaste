@@ -1,2 +1,20 @@
-/mvnw text eol=lf
-*.cmd text eol=crlf
+# Java files
+*.java linguist-detectable=true
+
+# Maven wrapper scripts
+/mvnw linguist-detectable=false
+*.cmd linguist-detectable=false
+
+# Resources
+*.xml linguist-detectable=false
+*.properties linguist-detectable=false
+
+# Front-end files 
+*.css linguist-detectable=false
+*.html linguist-detectable=false
+*.js linguist-detectable=false
+
+# Notebooks
+*.ipynb linguist-detectable=false
+*.jar linguist-detectable=false
+*.class linguist-detectable=false
