@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ro" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Termeni de utilizare </title>
+    <!-- Favicon Image -->
+    <link rel="icon" type="image/png" th:href="@{/images/assets/favicon.svg}"/>
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" th:href="@{/lib/css/swiper-bundle.min.css}"/>
+    <link rel="stylesheet" th:href="@{/lib/css/bvselect.css}"/>
+    <link rel="stylesheet" th:href="@{/lib/css/venobox.css}"/>
+    <link rel="stylesheet" th:href="@{/lib/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<!-- Spinner Start -->
+<div th:replace="~{/fragments/spinner :: spinner}"></div>
+<!-- Spinner End -->
+<!-- Shopping Cart sidebar  start  -->
+<div th:replace="~{/fragments/shopping-cart-sidebar :: shoppingCartSidebar}"></div>
+<!-- Shopping Cart Sidebar End -->
+<!-- Header Section Start -->
+<div th:replace="~{/fragments/header :: header}"></div>
+<!-- Header Section End -->
+<!-- breedcrumb section start  -->
+<div class="section breedcrumb">
+    <div class="breedcrumb__img-wrapper">
+        <img src="/images/banner/breedcrumb.jpg" alt="breedcrumb" />
+        <div class="container">
+            <ul class="breedcrumb__content">
+                <li>
+                    <a href="../../../../../TooGoodToWasteSanda/src/main/resources/templates/index.html">
+                        <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                    d="M1 8L9 1L17 8V18H12V14C12 13.2044 11.6839 12.4413 11.1213 11.8787C10.5587 11.3161 9.79565 11 9 11C8.20435 11 7.44129 11.3161 6.87868 11.8787C6.31607 12.4413 6 13.2044 6 14V18H1V8Z"
+                                    stroke="#808080"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                            />
+                        </svg>
+                        <span> > </span>
+                    </a>
+                </li>
+                <li class="active"><a href="about.html">Despre</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- breedcrumb section end   -->
+<div class="terms-container" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+    <h1 class="text-center" style="font-family: 'Arial', sans-serif; font-size: 32px; color: #81c408; font-weight: bold;">Termeni de utilizare</h1>
+    <p class="text-center" style="font-size: 14px; color: #888; margin-bottom: 30px;">Ultima actualizare: 15 august 2025</p>
+    <p style="font-size: 16px; line-height: 1.6; color: #555; text-align: justify; margin-bottom: 30px;">
+        Bine ai venit pe ToGoodToWaste. Prin accesarea sau utilizarea site-ului și a serviciilor noastre, ești de acord să respecți și să fii legat(ă) de următorii Termeni de utilizare. Te rugăm să îi citești cu atenție înainte de a folosi platforma.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">1. Acceptarea termenilor</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+        Prin utilizarea ToGoodToWaste („noi”, „platforma”, „serviciul”), confirmi că ești de acord cu acești termeni. Dacă nu ești de acord, te rugăm să nu folosești platforma. Ne rezervăm dreptul de a modifica acești termeni oricând, iar schimbările vor fi publicate pe această pagină.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">2. Eligibilitate</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+        Trebuie să ai cel puțin 18 ani pentru a utiliza serviciile noastre. Prin accesarea site-ului confirmi că îndeplinești această condiție.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">3. Conturi de utilizator</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+        Pentru a accesa anumite funcționalități, este posibil să fie nevoie să îți creezi un cont. Te angajezi să furnizezi informații corecte și complete la înregistrare și să îți actualizezi datele la nevoie. Ești responsabil(ă) de păstrarea confidențialității datelor de autentificare.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">4. Cumpărarea și vânzarea produselor</h2>
+    <h3 style="font-size: 20px; color: #81c408; margin-bottom: 10px;">Cumpărarea produselor</h3>
+    <ul style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+        <li><strong>Listarea produselor:</strong> Produsele afișate pe ToGoodToWaste sunt listate de vânzători independenți. Noi oferim platforma prin care pot fi achiziționate. Depunem eforturi pentru ca descrierile și prețurile să fie corecte, dar nu putem garanta lipsa totală a erorilor.</li>
+        <li><strong>Comandă și plată:</strong> Prin plasarea unei comenzi, te angajezi să achiți contravaloarea produselor, inclusiv taxe și livrare. Plățile se procesează securizat.</li>
+        <li><strong>Livrare:</strong> Vânzătorul este responsabil de expedierea produselor. ToGoodToWaste poate interveni ca intermediar în caz de dispute legate de livrare.</li>
+    </ul>
+
+    <h3 style="font-size: 20px; color: #81c408; margin-bottom: 10px;">Vânzarea produselor</h3>
+    <ul style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+        <li><strong>Cont de vânzător:</strong> Pentru a vinde pe platformă, trebuie să creezi un cont de vânzător și să furnizezi date corecte despre afacerea și produsele tale.</li>
+        <li><strong>Listarea produselor:</strong> Vânzătorii sunt responsabili să descrie corect produsele, inclusiv preț, calitate și disponibilitate. Produsele trebuie să respecte legislația în vigoare și politicile ToGoodToWaste.</li>
+        <li><strong>Comisioane:</strong> ToGoodToWaste percepe un comision pentru fiecare vânzare. Valoarea comisionului este specificată în acordul de vânzător.</li>
+        <li><strong>Expediere și retururi:</strong> Vânzătorii trebuie să trimită produsele la timp și să gestioneze retururile și rambursările conform politicilor noastre.</li>
+    </ul>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">5. Drepturi de proprietate intelectuală</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+        Conținutul de pe ToGoodToWaste (texte, imagini, logo-uri, software) este proprietatea noastră și este protejat de legislația privind drepturile de autor. Vânzătorii pot lista doar produse pe care au dreptul legal să le vândă.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">6. Conduită a utilizatorilor</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 15px;">Ești de acord să NU:</p>
+    <ul style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+        <li>Folosești platforma în scopuri ilegale sau frauduloase.</li>
+        <li>Încalci legile în vigoare în jurisdicția ta.</li>
+        <li>Listezi produse care încalcă drepturile de proprietate intelectuală sau care sunt periculoase.</li>
+        <li>Încerci să manipulezi sau să obții acces neautorizat la platformă.</li>
+    </ul>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">7. Retururi, rambursări și dispute</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+        Pentru detalii despre politica de retur și rambursări, consultă <a href="@Url.Action('SalesAndRefunds', 'Legal')" style="color: #81c408; text-decoration: none;">Politica de retur și rambursare</a>.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">8. Confidențialitate și protecția datelor</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+        Utilizarea site-ului este guvernată de <a href="@Url.Action('PrivacyPolicy', 'Legal')" style="color: #81c408; text-decoration: none;">Politica noastră de confidențialitate</a>, care explică modul în care colectăm, folosim și protejăm datele tale personale.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">9. Limitarea răspunderii</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+        În măsura permisă de lege, ToGoodToWaste nu este responsabilă pentru daune directe, indirecte sau consecințiale rezultate din utilizarea site-ului sau a serviciilor.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">10. Legea aplicabilă</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+        Acești Termeni de utilizare sunt guvernați de legislația țării în care operează ToGoodToWaste. Orice dispută va fi soluționată de instanțele competente din acea jurisdicție.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">11. Modificări</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+        Ne rezervăm dreptul de a modifica acești termeni oricând. Continuarea utilizării platformei după modificări constituie acceptarea noilor termeni.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">12. Contact</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 20px;">Dacă ai întrebări sau nelămuriri legate de acești Termeni de utilizare, ne poți contacta la:</p>
+    <p style="font-size: 16px; color: #555; margin-bottom: 10px;">Email: <a style="color: #81c408; text-decoration: none;">team.togoodtowaste@gmail.com</a></p>
+    <p style="font-size: 16px; color: #555;">Telefon: +373 69896734</p>
+
+</div>
+<!-- Main Section End -->
+<!--Footer Section Start  -->
+<div th:replace="~{/fragments/footer :: footer}"></div>
+<!--Footer Section end  -->
+<script src="/lib/js/jquery.min.js"></script>
+<script src="/lib/js/swiper-bundle.min.js"></script>
+<script src="/lib/js/bvselect.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
