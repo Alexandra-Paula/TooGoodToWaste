@@ -11,6 +11,7 @@ import org.application.waste.enums.RecommendationStatus;
 import org.application.waste.enums.RecommendationStatusConverter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -38,6 +39,9 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     private List<Review> reviews;
+
+    @OneToMany(mappedBy = "product")
+    private List<CartItem> cartItems = new ArrayList<>();
 
     @Column(name = "name", nullable = false, length = 80)
     private String name;
