@@ -284,12 +284,33 @@ $galleryItem.on('click', function () {
 /*
     9. Cart Quantity
 ======================== */
-function increment() {
-    document.getElementById('counter-btn-counter').stepUp();
+
+function increment(button) {
+    const input = button.parentElement.querySelector('input');
+    const max = parseInt(input.max);
+    if (parseInt(input.value) < max) {
+        input.stepUp();
+    }
 }
 
-function decrement() {
-    document.getElementById('counter-btn-counter').stepDown();
+function decrement(button) {
+    const input = button.parentElement.querySelector('input');
+    const min = parseInt(input.min);
+    if (parseInt(input.value) > min) {
+        input.stepDown();
+    }
+}
+
+function validateQuantity(input) {
+    const min = parseInt(input.min);
+    const max = parseInt(input.max);
+    let value = parseInt(input.value);
+
+    if (isNaN(value) || value < min) {
+        input.value = min;
+    } else if (value > max) {
+        input.value = max;
+    }
 }
 
 /*
