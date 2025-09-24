@@ -18,4 +18,7 @@ public interface ReviewService {
     void updateReview(ReviewDto reviewDto);
 
     void updateProductRating(Long productId);
+
+    List<ReviewDto> getAllReviews();
+
 }

@@ -114,4 +114,26 @@ public class ReviewServiceImpl implements ReviewService {
         product.setRating(roundedRating);
         productRepository.save(product);
     }
+
+    @Override
+    public List<ReviewDto> getAllReviews() {
+        List<Review> reviews = reviewRepository.findAll();
+        List<ReviewDto> reviewDtos = new ArrayList<>();
+
+        for (Review review : reviews) {
+            ReviewDto dto = new ReviewDto();
+            dto.setId(review.getId());
+            dto.setProductId(review.getProduct().getId());
+            dto.setRating(review.getRating());
+            dto.setReview(review.getReview());
+            dto.setDatePosted(review.getDatePosted());
+            dto.setReviewerName(review.getUser().getUsername());
+            dto.setUserImage("/images/assets/user.png");
+            reviewDtos.add(dto);
+        }
+
+        return reviewDtos;
+    }
+
+
 }
