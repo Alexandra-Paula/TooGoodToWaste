@@ -1,9 +1,11 @@
 package org.application.waste.service;
 
 import org.application.waste.dto.ProductDto;
+import org.application.waste.entity.Category;
 import org.application.waste.entity.Product;
 import org.application.waste.entity.ProductLink;
 import org.application.waste.enums.Availability;
+import org.application.waste.repository.CategoryRepository;
 import org.application.waste.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +15,11 @@ import java.util.stream.Collectors;
 @Service
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @Override
@@ -208,4 +212,44 @@ public class ProductServiceImpl implements ProductService {
 
         return productDtos;
     }
+
+    @Override
+    public List<ProductDto> getRecommendedProducts() {
+
+        List<Product> recommendedProducts = productRepository
+                .findAllByRatingGreaterThan(2)
+                .stream()
+                .sorted(Comparator.comparing(Product::getRating).reversed())
+                .limit(10)
+                .toList();
+
+        List<ProductDto> productDtos = new ArrayList<>();
+
+        for (Product product : recommendedProducts ) {
+            ProductDto dto = new ProductDto();
+            dto.setId(product.getId());
+            dto.setName(product.getName());
+            dto.setInitialPrice(product.getInitialPrice());
+            dto.setFinalPrice(product.getFinalPrice());
+            dto.setRating(product.getRating());
+            dto.setProductImage(product.getProductImage());
+            dto.setProductDiscount(product.getProductDiscount());
+            dto.setDescription(product.getDescription());
+            dto.setCode(product.getCode());
+            dto.setCategory(product.getCategory());
+            dto.setQuantity(product.getQuantity());
+            dto.setQuality(product.getQuality());
+            dto.setCompanyImage(product.getCompanyImage());
+            dto.setPickupAddress(product.getPickupAddress());
+
+            productDtos.add(dto);
+        }
+        return productDtos;
+    }
+
+    @Override
+    public List<Category> getAllCategories() {
+        return categoryRepository.findAll();
+    }
+
 }

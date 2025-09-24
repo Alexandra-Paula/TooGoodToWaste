@@ -152,77 +152,80 @@
                         <a th:href="@{index}">Acasă</a>
                     </li>
                     <li class="header__navigation-menu-link">
-                        <a href="../shop-01.html">Magazin</a>
+                        <a th:href="@{shop}">Magazin</a>
                     </li>
                     <li class="header__navigation-menu-link">
-                        <a href="#">Categorii
+                        <a th:href="@{shop}">Categorii
                             <span class="drop-icon">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3.33332 5.66667L7.99999 10.3333L12.6667 5.66667" stroke="currentColor"
-                                          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.33332 5.66667L7.99999 10.3333L12.6667 5.66667" stroke="currentColor"
+                      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </span>
                         </a>
                         <ul class="header__navigation-drop-menu">
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Fructe</a>
+                                <a th:href="@{/shop(category=1)}">Fructe</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Legume</a>
+                                <a th:href="@{/shop(category=2)}">Legume</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Carne</a>
+                                <a th:href="@{/shop(category=3)}">Carne</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Pește</a>
+                                <a th:href="@{/shop(category=4)}">Pește</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Mezeluri</a>
+                                <a th:href="@{/shop(category=5)}">Mezeluri</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Produse congelate</a>
+                                <a th:href="@{/shop(category=6)}">Produse congelate</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Lactate</a>
+                                <a th:href="@{/shop(category=7)}">Lactate</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Patiserie</a>
+                                <a th:href="@{/shop(category=8)}">Patiserie</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Produse culinare</a>
+                                <a th:href="@{/shop(category=9)}">Produse culinare</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Dulciuri</a>
+                                <a th:href="@{/shop(category=10)}">Dulciuri</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Cereale & crupe</a>
+                                <a th:href="@{/shop(category=11)}">Cereale & crupe</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Panificație</a>
+                                <a th:href="@{/shop(category=12)}">Panificație</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Condimente & sosuri</a>
+                                <a th:href="@{/shop(category=13)}">Condimente & sosuri</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Conserve</a>
+                                <a th:href="@{/shop(category=14)}">Conserve</a>
                             </li>
                             <li class="header__navigation-drop-menu-link">
-                                <a href="#">Nuci & semințe</a>
+                                <a th:href="@{/shop(category=15)}">Nuci & semințe</a>
                             </li>
                         </ul>
                     </li>
+
                     <li class="header__navigation-menu-link">
-                        <a href="../blog-list.html">Blog</a>
+                        <a th:href="@{blog/list}">Blog</a>
                     </li>
                     <li class="header__navigation-menu-link">
-                        <a href="about.html">Despre</a>
+                        <a th:href="@{about}">Despre</a>
                     </li>
                     <li class="header__navigation-menu-link">
-                        <a href="../faq.html">Faq</a>
+                        <a th:href="@{faq}">Faq</a>
                     </li>
                     <li class="header__navigation-menu-link">
-                        <a href="../faq.html">Contact</a>
+                        <a th:href="@{contact}">Contact</a>
+                    </li>
+                    <li class="header__navigation-menu-link">
+                        <a th:href="@{chat}">Asistent</a>
                     </li>
                 </ul>
                 <a href="#" class="header__telephone-number dark">

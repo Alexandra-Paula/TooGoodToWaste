@@ -2,6 +2,7 @@ package org.application.waste.service;
 
 import jakarta.validation.Valid;
 import org.application.waste.dto.ProductDto;
+import org.application.waste.entity.Category;
 import org.application.waste.entity.Product;
 import org.application.waste.entity.ProductLink;
 
@@ -33,4 +34,10 @@ public interface ProductService {
     Optional<ProductDto> findProductById(Long id);
 
     List<ProductDto> getAllAvailableProducts();
+
+    List<ProductDto> getRecommendedProducts();
+
+    List<Category> getAllCategories();
+
+
 }

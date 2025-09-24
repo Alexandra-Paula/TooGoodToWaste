@@ -185,7 +185,7 @@
                         <a th:href="@{index}">Acasă</a>
                     </li>
                     <li class="header__navigation-menu-link">
-                        <a href="#">Magazin</a>
+                        <a th:href="@{shop}">Magazin</a>
                     </li>
                     <li class="header__navigation-menu-link">
                         <a href="#">Categorii
@@ -198,64 +198,25 @@
                             </span>
                         </a>
                         <ul class="header__navigation-drop-menu">
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Fructe</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Legume</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Carne</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Pește</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Mezeluri</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Produse congelate</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Lactate</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Patiserie</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Produse culinare</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Dulciuri</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Cereale & crupe</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Panificație</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Condimente & sosuri</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Conserve</a>
-                            </li>
-                            <li class="header__navigation-drop-menu-link">
-                                <a href="#">Nuci & semințe</a>
+                            <li class="header__navigation-drop-menu-link" th:each="category : ${categories}">
+                                <a th:href="@{/shop(category=${category.id})}" th:text="${category.categoryName}">Categorie</a>
                             </li>
                         </ul>
                     </li>
                     <li class="header__navigation-menu-link">
-                        <a href="#">Blog</a>
+                        <a th:href="@{blog/list}">Blog</a>
                     </li>
                     <li class="header__navigation-menu-link">
-                        <a href="#">Despre</a>
+                        <a th:href="@{about}">Despre</a>
                     </li>
                     <li class="header__navigation-menu-link">
-                        <a href="#">Faq</a>
+                        <a th:href="@{faq}">Faq</a>
                     </li>
                     <li class="header__navigation-menu-link">
-                        <a href="#">Contact</a>
+                        <a th:href="@{contact}">Contact</a>
+                    </li>
+                    <li class="header__navigation-menu-link">
+                        <a th:href="@{chat}">Asistent</a>
                     </li>
                 </ul>
                 <a href="#" class="header__telephone-number">
@@ -461,8 +422,8 @@
                                 <div class="banner__wrapper-text">
                                     <h2 class="font-title--xl">Selecție responsabilă</h2>
                                     <div class="sale-off">
-                                        <h5 class="font-body--xxl-500">Reduceri de până la <span>30%</span></h5>
-                                        <p class="font-body--md">Proaspăt și responsabil – livrare gratuită inclusă</p>
+                                        <h5 class="font-body--xxl-500">Reduceri de peste <span>50%</span></h5>
+                                        <p class="font-body--md">Salvează mâncarea bună de la risipă !</p>
                                     </div>
                                     <a href="#" class="button button--md">Cumpără acum
                                         <span>
@@ -485,8 +446,8 @@
                                 <div class="banner__wrapper-text">
                                     <h2 class="font-title--xl">Selecție responsabilă</h2>
                                     <div class="sale-off">
-                                        <h5 class="font-body--xxl-500">Reduceri de până la <span>30%</span></h5>
-                                        <p class="font-body--md">Proaspăt și responsabil – livrare gratuită inclusă</p>
+                                        <h5 class="font-body--xxl-500">Reduceri de peste <span>50%</span></h5>
+                                        <p class="font-body--md">Salvează mâncarea bună de la risipă !</p>
                                     </div>
                                     <a href="#" class="button button--md">Cumpără acum
                                         <span>
@@ -509,10 +470,10 @@
                                 <div class="banner__wrapper-text">
                                     <h2 class="font-title--xl">Selecție responsabilă</h2>
                                     <div class="sale-off">
-                                        <h5 class="font-body--xxl-500">Reduceri de până la <span>30%</span></h5>
-                                        <p class="font-body--md">Proaspăt și responsabil – livrare gratuită inclusă</p>
+                                        <h5 class="font-body--xxl-500">Reduceri de peste <span>50%</span></h5>
+                                        <p class="font-body--md">Salvează mâncarea bună de la risipă !</p>
                                     </div>
-                                    <a href="#" class="button button--md">Cumpără acum
+                                    <a th:href="@{/shop}" class="button button--md">Cumpără acum
                                         <span>
                                             <svg width="17" height="15" viewBox="0 0 17 15" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -536,9 +497,9 @@
                         <img th:src="@{/images/banner/banner-4.jpg}" alt="banner"/>
                         <div class="banner__wrapper-text">
                             <h5 class="font-body--md-500">Colecția Responsabilă</h5>
-                            <h2 class="font-title--sm">-45%</h2>
+                            <h2 class="font-title--sm">-50%</h2>
                             <p class="font-body--md-400">Produse sustenabile</p>
-                            <a href="#" class="button button--md">Cumpără acum
+                            <a th:href="@{/shop}" class="button button--md">Cumpără acum
                                 <span>
                                     <svg width="17" height="15" viewBox="0 0 17 15" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -556,9 +517,9 @@
                             <img th:src="@{/images/banner/banner-5.jpg}" alt="banner"/>
                             <div class="banner__wrapper-text">
                                 <h5 class="font-body--md-500">Colecția sustenabilă</h5>
-                                <h2 class="font-title--sm">-55%</h2>
-                                <p class="font-body--md-400">Produse proaspete</p>
-                                <a href="#" class="button button--md">Cumpără acum
+                                <h2 class="font-title--sm">-50%</h2>
+                                <p class="font-body--md-400">Produse responsabile</p>
+                                <a th:href="@{/shop}" class="button button--md">Cumpără acum
                                     <span>
                                         <svg width="17" height="15" viewBox="0 0 17 15" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -597,17 +558,76 @@
                     <p class="font-body--md-400">Livrare gratuită pentru toate comenzile</p>
                 </div>
             </div>
-            <!-- Customer Support -->
+            <!-- Pret redus -->
             <div class="cards-ship__item">
-                <span class="cards-ship__item-icon">
-                    <svg width="39" height="40" viewBox="0 0 39 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M33.0182 15.2101V13.6723C33.0182 9.9916 31.7157 6.57143 29.3543 4.03361C26.9342 1.42857 23.6064 0 19.9762 0H18.7073C15.077 0 11.7493 1.42857 9.32912 4.03361C6.96778 6.57143 5.66526 9.9916 5.66526 13.6723V15.2101C2.79971 15.4034 0.5224 17.7899 0.5224 20.7059V23.1092C0.5224 26.1429 2.99299 28.6134 6.0266 28.6134H9.12744C9.68207 28.6134 10.1358 28.1597 10.1358 27.605V16.2017C10.1358 15.6471 9.68207 15.1933 9.12744 15.1933H7.68206V13.6723C7.68206 7.02521 12.4216 2.01681 18.6989 2.01681H19.9678C26.2535 2.01681 30.9846 7.02521 30.9846 13.6723V15.1933H29.5392C28.9846 15.1933 28.5308 15.6471 28.5308 16.2017V27.5966C28.5308 28.1513 28.9846 28.605 29.5392 28.605H30.951C30.5392 33.8655 26.9174 35.084 25.2367 35.3613C24.7745 33.9412 23.4384 32.916 21.8669 32.916H19.3459C17.3964 32.916 15.8081 34.5042 15.8081 36.4538C15.8081 38.4034 17.3964 40 19.3459 40H21.8753C23.5056 40 24.8753 38.8908 25.2871 37.395C26.1106 37.2773 27.4132 36.9832 28.7073 36.2269C30.5308 35.1597 32.6905 32.9832 32.9762 28.5966C35.8585 28.4202 38.1443 26.0252 38.1443 23.1008V20.6975C38.1527 17.7899 35.8838 15.395 33.0182 15.2101ZM8.13585 26.5882H6.04341C4.11904 26.5882 2.55601 25.0252 2.55601 23.1008V20.6975C2.55601 18.7731 4.11904 17.2101 6.04341 17.2101H8.13585V26.5882ZM21.8753 37.9832H19.3459C18.5056 37.9832 17.8249 37.3025 17.8249 36.4622C17.8249 35.6218 18.5056 34.9412 19.3459 34.9412H21.8753C22.7157 34.9412 23.3964 35.6218 23.3964 36.4622C23.3964 37.3025 22.7157 37.9832 21.8753 37.9832ZM36.1359 23.1008C36.1359 25.0252 34.5728 26.5882 32.6485 26.5882H30.556V17.2101H32.6485C34.5728 17.2101 36.1359 18.7731 36.1359 20.6975V23.1008Z"
-                              fill="#00B307"></path>
+                <div class="icon" style="color: #00B307; transform: translateX(-15px);">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#)">
+                            <path d="M31.1384 17.3704C30.9781 16.8758 ..." fill="currentColor" stroke="currentColor" stroke-width="0.3"/>
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#)">
+                                    <path
+                                            d="M31.1384 17.3704C30.9781 16.8758 30.5586 16.5221 30.0439 16.4474L23.9436 15.5609L21.2156 10.0337C20.9859 9.56711 20.52 9.27734 19.9999 9.27734C19.4798 9.27734 19.0139 9.56711 18.7843 10.0332L16.056 15.5609L9.95566 16.4474C9.44137 16.5221 9.02199 16.8755 8.86113 17.3702C8.70082 17.8641 8.83215 18.3965 9.20426 18.7598L13.6187 23.0625L12.5766 29.138C12.4886 29.6503 12.695 30.1584 13.1157 30.4641C13.3533 30.637 13.6314 30.7248 13.9114 30.7247C14.1268 30.7247 14.3434 30.6727 14.5435 30.5675L19.9999 27.6989L25.4559 30.5676C25.6496 30.6693 25.8677 30.7231 26.0865 30.7231C26.375 30.7231 26.6505 30.6336 26.8837 30.4641C27.3036 30.1587 27.5104 29.6509 27.4228 29.1384L27.0106 26.7347C26.9515 26.3909 26.6247 26.1599 26.2813 26.2189C25.9375 26.2779 25.7066 26.6045 25.7656 26.9482L26.1778 29.3515C26.1836 29.3862 26.1691 29.422 26.1409 29.4424C26.099 29.473 26.0686 29.4627 26.0434 29.4494L20.2934 26.4264C20.1095 26.3298 19.8898 26.3297 19.7056 26.4264L13.955 29.4495C13.9243 29.4657 13.8861 29.4629 13.8579 29.4424C13.8293 29.4216 13.8151 29.387 13.8211 29.3519L14.9194 22.9488C14.9546 22.7438 14.8868 22.5348 14.7379 22.3898L10.0859 17.8555C10.0607 17.8309 10.0514 17.7936 10.0621 17.7606C10.0729 17.7273 10.1023 17.7024 10.1369 17.6974L16.5659 16.7632C16.7717 16.7333 16.9495 16.6041 17.0415 16.4177L19.9169 10.5918C19.9482 10.5284 20.0509 10.5279 20.0825 10.5921L22.9578 16.4177C23.0497 16.6041 23.2276 16.7333 23.4333 16.7632L29.8624 17.6974C29.8969 17.7025 29.9261 17.727 29.9371 17.7609C29.9479 17.7939 29.9386 17.831 29.9136 17.8553L25.2615 22.3898C25.1127 22.5348 25.0447 22.744 25.08 22.9488L25.427 24.9719C25.4858 25.3156 25.8125 25.5466 26.1561 25.4876C26.5 25.4286 26.7309 25.102 26.6718 24.7583L26.381 23.0625L30.7954 18.7595C31.1678 18.3964 31.2991 17.8639 31.1384 17.3704Z"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="0.3"
+                                    />
+                                    <path
+                                            d="M3.63141 19.3682H0.631562C0.282734 19.3682 0 19.6509 0 19.9997C0 20.3485 0.282734 20.6313 0.631562 20.6313H3.63141C3.98031 20.6313 4.26297 20.3485 4.26297 19.9997C4.26297 19.6509 3.98023 19.3682 3.63141 19.3682Z"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="0.3"
+                                    />
+                                    <path
+                                            d="M39.3682 19.3682H36.3684C36.0195 19.3682 35.7368 19.651 35.7368 19.9997C35.7368 20.3485 36.0195 20.6313 36.3684 20.6313H39.3682C39.7171 20.6313 39.9997 20.3485 39.9997 19.9997C39.9997 19.6509 39.7171 19.3682 39.3682 19.3682Z"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="0.3"
+                                    />
+                                    <path
+                                            d="M7.97907 31.1274L5.8579 33.2485C5.61118 33.495 5.61118 33.895 5.85782 34.1416C5.98118 34.265 6.14282 34.3266 6.30446 34.3266C6.46603 34.3266 6.62774 34.265 6.75095 34.1417L8.87212 32.0205C9.11884 31.7739 9.11884 31.374 8.8722 31.1274C8.62556 30.8807 8.22563 30.8807 7.97907 31.1274Z"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="0.3"
+                                    />
+                                    <path
+                                            d="M33.2487 5.85694L31.1274 7.97804C30.8807 8.22468 30.8807 8.6246 31.1274 8.87124C31.2507 8.9946 31.4123 9.05624 31.574 9.05624C31.7356 9.05624 31.8973 8.9946 32.0205 8.87116L34.1417 6.75007C34.3884 6.50351 34.3884 6.10358 34.1418 5.85694C33.8951 5.61022 33.4952 5.61015 33.2487 5.85694Z"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="0.3"
+                                    />
+                                    <path
+                                            d="M20.0002 35.7373C19.6513 35.7373 19.3687 36.0201 19.3687 36.3689V39.3686C19.3687 39.7175 19.6514 40.0002 20.0002 40.0002C20.3491 40.0002 20.6318 39.7174 20.6318 39.3686V36.3689C20.6318 36.02 20.3491 35.7373 20.0002 35.7373Z"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="0.3"
+                                    />
+                                    <path
+                                            d="M20.0002 4.26297C20.3491 4.26297 20.6318 3.98016 20.6318 3.63141V0.631562C20.6318 0.282734 20.349 0 20.0002 0C19.6513 0 19.3687 0.282812 19.3687 0.631562V3.63141C19.3687 3.98023 19.6513 4.26297 20.0002 4.26297Z"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="0.3"
+                                    />
+                                    <path
+                                            d="M32.0205 31.1274C31.774 30.8807 31.3741 30.8807 31.1274 31.1274C30.8807 31.3739 30.8807 31.7739 31.1274 32.0205L33.2487 34.1417C33.3719 34.265 33.5337 34.3267 33.6952 34.3267C33.8568 34.3267 34.0185 34.265 34.1418 34.1416C34.3884 33.895 34.3884 33.4951 34.1417 33.2485L32.0205 31.1274Z"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="0.3"
+                                    />
+                                    <path
+                                            d="M7.979 8.87214C8.10236 8.9955 8.264 9.05714 8.42564 9.05714C8.5872 9.05714 8.74892 8.9955 8.8722 8.87229C9.11884 8.62565 9.11884 8.22573 8.8722 7.97909L6.75103 5.85783C6.50447 5.61119 6.10463 5.61119 5.85783 5.85783C5.61119 6.1044 5.61119 6.50432 5.85783 6.75096L7.979 8.87214Z"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="0.3"
+                                    />
+                                </g>
+                            </svg>
+                        </g>
                     </svg>
-                </span>
+                </div>
                 <div class="cards-ship__item-process-info">
-                    <h2 class="font-body--lg-600">Suport clienți 24/7</h2>
-                    <p class="font-body--md-400">Acces rapid la asistență</p>
+                    <h2 class="font-body--lg-600">Preț redus</h2>
+                    <p class="font-body--md-400">Bucură-te de mâncare bună la ½ preț sau chiar mai puțin.</p>
                 </div>
             </div>
             <!-- Secure Payment -->
@@ -623,7 +643,7 @@
                     <p class="font-body--md-400">Banii tăi sunt în siguranță</p>
                 </div>
             </div>
-            <!-- Money Back -->
+            <!-- Descopera -->
             <div class="cards-ship__item">
                 <span class="cards-ship__item-icon">
                     <svg width="38" height="40" viewBox="0 0 38 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -632,8 +652,8 @@
                     </svg>
                 </span>
                 <div class="cards-ship__item-process-info">
-                    <h2 class="font-body--lg-600">Garanție returnare bani</h2>
-                    <p class="font-body--md-400">Returnare bani în 30 de zile</p>
+                    <h2 class="font-body--lg-600">Descoperă</h2>
+                    <p class="font-body--md-400">Încearcă ceva nou de la supermarketuri, cafenele sau patiserii</p>
                 </div>
             </div>
         </div>
@@ -646,7 +666,7 @@
     <div class="container">
         <div class="section__head">
             <h2 class="section--title-one font-title--sm">Produse populare</h2>
-            <a href="#">Vezi toate
+            <a th:href="@{/shop}">Vezi toate
                 <span>
                     <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16 7.50049H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -659,12 +679,12 @@
         </div>
         <!-- Desktop Version -->
         <div class="popular-products__wrapper">
-            <div class="cards-md">
+            <div class="cards-md" th:each="product : ${popularProducts}">
                 <div class="cards-md__img-wrapper">
-                    <a href="#">
-                        <img src="" alt="products"/>
+                    <a th:href="@{/product-details(id=${product.id})}">
+                        <img th:src="@{${product.productImage}}" alt="products"/>
                     </a>
-                    <span class="tag danger font-body--md-400">-50%</span>
+                    <span class="tag danger font-body--md-400" th:text="'-' + ${product.productDiscount.percent} + '%'">-50%</span>
                     <div class="cards-md__favs-list">
                         <span class="action-btn">
                             <svg width="20" height="18" viewBox="0 0 20 18" fill="none"
@@ -688,58 +708,37 @@
                 </div>
                 <div class="cards-md__info d-flex justify-content-between align-items-center">
                     <a href="#" class="cards-md__info-left">
-                        <h6 class="font-body--md-400">Portocală</h6>
+                        <h6 class="font-body--md-400" th:text = "${product.name}"></h6>
                         <div class="cards-md__info-price">
-                            <span class="font-body--lg-500">14.99 MDL</span>
-                            <del class="font-body--lg-400">14.99 MDL</del>
+                            <span class="font-body--lg-500" th:text="${product.finalPrice} + ' MDL'"></span>
+                            <del class="font-body--lg-400" th:text="${product.initialPrice} + ' MDL'"></del>
                         </div>
                         <ul class="cards-md__info-rating d-flex">
-                            <li>
+                            <li th:each="i : ${#numbers.sequence(1,5)}">
                                 <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6.20663 9.44078L8.57101 10.9385C8.87326 11.1298 9.24826 10.8452 9.15863 10.4923L8.47576 7.80541C8.45647 7.73057 8.45869 7.6518 8.48217 7.57816C8.50566 7.50453 8.54945 7.43902 8.60851 7.38916L10.7288 5.62478C11.007 5.39303 10.8638 4.93066 10.5056 4.90741L7.73701 4.72741C7.66246 4.72212 7.59096 4.69577 7.53081 4.65142C7.47066 4.60707 7.42435 4.54656 7.39726 4.47691L6.36451 1.87666C6.33638 1.80276 6.28647 1.73916 6.22137 1.69428C6.15627 1.6494 6.07907 1.62537 6.00001 1.62537C5.92094 1.62537 5.84374 1.6494 5.77864 1.69428C5.71354 1.73916 5.66363 1.80276 5.63551 1.87666L4.60276 4.47691C4.57572 4.54663 4.52943 4.60722 4.46928 4.65164C4.40913 4.69606 4.33759 4.72246 4.26301 4.72778L1.49438 4.90778C1.13663 4.93066 0.992631 5.39303 1.27126 5.62478L3.39151 7.38953C3.4505 7.43936 3.49424 7.50481 3.51772 7.57837C3.54121 7.65193 3.54347 7.73062 3.52426 7.80541L2.89126 10.2973C2.78363 10.7207 3.23401 11.0623 3.59626 10.8324L5.79376 9.44078C5.85552 9.40152 5.92719 9.38066 6.00038 9.38066C6.07357 9.38066 6.14524 9.40152 6.20701 9.44078H6.20663Z"
-                                          fill="#FF8A00"></path>
-                                </svg>
-                            </li>
-                            <li>
-                                <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6.20663 9.44078L8.57101 10.9385C8.87326 11.1298 9.24826 10.8452 9.15863 10.4923L8.47576 7.80541C8.45647 7.73057 8.45869 7.6518 8.48217 7.57816C8.50566 7.50453 8.54945 7.43902 8.60851 7.38916L10.7288 5.62478C11.007 5.39303 10.8638 4.93066 10.5056 4.90741L7.73701 4.72741C7.66246 4.72212 7.59096 4.69577 7.53081 4.65142C7.47066 4.60707 7.42435 4.54656 7.39726 4.47691L6.36451 1.87666C6.33638 1.80276 6.28647 1.73916 6.22137 1.69428C6.15627 1.6494 6.07907 1.62537 6.00001 1.62537C5.92094 1.62537 5.84374 1.6494 5.77864 1.69428C5.71354 1.73916 5.66363 1.80276 5.63551 1.87666L4.60276 4.47691C4.57572 4.54663 4.52943 4.60722 4.46928 4.65164C4.40913 4.69606 4.33759 4.72246 4.26301 4.72778L1.49438 4.90778C1.13663 4.93066 0.992631 5.39303 1.27126 5.62478L3.39151 7.38953C3.4505 7.43936 3.49424 7.50481 3.51772 7.57837C3.54121 7.65193 3.54347 7.73062 3.52426 7.80541L2.89126 10.2973C2.78363 10.7207 3.23401 11.0623 3.59626 10.8324L5.79376 9.44078C5.85552 9.40152 5.92719 9.38066 6.00038 9.38066C6.07357 9.38066 6.14524 9.40152 6.20701 9.44078H6.20663Z"
-                                          fill="#FF8A00"></path>
-                                </svg>
-                            </li>
-                            <li>
-                                <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6.20663 9.44078L8.57101 10.9385C8.87326 11.1298 9.24826 10.8452 9.15863 10.4923L8.47576 7.80541C8.45647 7.73057 8.45869 7.6518 8.48217 7.57816C8.50566 7.50453 8.54945 7.43902 8.60851 7.38916L10.7288 5.62478C11.007 5.39303 10.8638 4.93066 10.5056 4.90741L7.73701 4.72741C7.66246 4.72212 7.59096 4.69577 7.53081 4.65142C7.47066 4.60707 7.42435 4.54656 7.39726 4.47691L6.36451 1.87666C6.33638 1.80276 6.28647 1.73916 6.22137 1.69428C6.15627 1.6494 6.07907 1.62537 6.00001 1.62537C5.92094 1.62537 5.84374 1.6494 5.77864 1.69428C5.71354 1.73916 5.66363 1.80276 5.63551 1.87666L4.60276 4.47691C4.57572 4.54663 4.52943 4.60722 4.46928 4.65164C4.40913 4.69606 4.33759 4.72246 4.26301 4.72778L1.49438 4.90778C1.13663 4.93066 0.992631 5.39303 1.27126 5.62478L3.39151 7.38953C3.4505 7.43936 3.49424 7.50481 3.51772 7.57837C3.54121 7.65193 3.54347 7.73062 3.52426 7.80541L2.89126 10.2973C2.78363 10.7207 3.23401 11.0623 3.59626 10.8324L5.79376 9.44078C5.85552 9.40152 5.92719 9.38066 6.00038 9.38066C6.07357 9.38066 6.14524 9.40152 6.20701 9.44078H6.20663Z"
-                                          fill="#FF8A00"></path>
-                                </svg>
-                            </li>
-                            <li>
-                                <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6.20663 9.44078L8.57101 10.9385C8.87326 11.1298 9.24826 10.8452 9.15863 10.4923L8.47576 7.80541C8.45647 7.73057 8.45869 7.6518 8.48217 7.57816C8.50566 7.50453 8.54945 7.43902 8.60851 7.38916L10.7288 5.62478C11.007 5.39303 10.8638 4.93066 10.5056 4.90741L7.73701 4.72741C7.66246 4.72212 7.59096 4.69577 7.53081 4.65142C7.47066 4.60707 7.42435 4.54656 7.39726 4.47691L6.36451 1.87666C6.33638 1.80276 6.28647 1.73916 6.22137 1.69428C6.15627 1.6494 6.07907 1.62537 6.00001 1.62537C5.92094 1.62537 5.84374 1.6494 5.77864 1.69428C5.71354 1.73916 5.66363 1.80276 5.63551 1.87666L4.60276 4.47691C4.57572 4.54663 4.52943 4.60722 4.46928 4.65164C4.40913 4.69606 4.33759 4.72246 4.26301 4.72778L1.49438 4.90778C1.13663 4.93066 0.992631 5.39303 1.27126 5.62478L3.39151 7.38953C3.4505 7.43936 3.49424 7.50481 3.51772 7.57837C3.54121 7.65193 3.54347 7.73062 3.52426 7.80541L2.89126 10.2973C2.78363 10.7207 3.23401 11.0623 3.59626 10.8324L5.79376 9.44078C5.85552 9.40152 5.92719 9.38066 6.00038 9.38066C6.07357 9.38066 6.14524 9.40152 6.20701 9.44078H6.20663Z"
-                                          fill="#FF8A00"></path>
-                                </svg>
-                            </li>
-                            <li>
-                                <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6.20663 9.44078L8.57101 10.9385C8.87326 11.1298 9.24826 10.8452 9.15863 10.4923L8.47576 7.80541C8.45647 7.73057 8.45869 7.6518 8.48217 7.57816C8.50566 7.50453 8.54945 7.43902 8.60851 7.38916L10.7288 5.62478C11.007 5.39303 10.8638 4.93066 10.5056 4.90741L7.73701 4.72741C7.66246 4.72212 7.59096 4.69577 7.53081 4.65142C7.47066 4.60707 7.42435 4.54656 7.39726 4.47691L6.36451 1.87666C6.33638 1.80276 6.28647 1.73916 6.22137 1.69428C6.15627 1.6494 6.07907 1.62537 6.00001 1.62537C5.92094 1.62537 5.84374 1.6494 5.77864 1.69428C5.71354 1.73916 5.66363 1.80276 5.63551 1.87666L4.60276 4.47691C4.57572 4.54663 4.52943 4.60722 4.46928 4.65164C4.40913 4.69606 4.33759 4.72246 4.26301 4.72778L1.49438 4.90778C1.13663 4.93066 0.992631 5.39303 1.27126 5.62478L3.39151 7.38953C3.4505 7.43936 3.49424 7.50481 3.51772 7.57837C3.54121 7.65193 3.54347 7.73062 3.52426 7.80541L2.89126 10.2973C2.78363 10.7207 3.23401 11.0623 3.59626 10.8324L5.79376 9.44078C5.85552 9.40152 5.92719 9.38066 6.00038 9.38066C6.07357 9.38066 6.14524 9.40152 6.20701 9.44078H6.20663Z"
-                                          fill="#CCCCCC"></path>
+                                    <path th:attr="fill=${i <= product.rating} ? '#FF8A00' : '#CCCCCC'"
+                                          d="M6.20663 9.44078L8.57101 10.9385C8.87326 11.1298 9.24826 10.8452 9.15863 10.4923L8.47576 7.80541C8.45647 7.73057 8.45869 7.6518 8.48217 7.57816C8.50566 7.50453 8.54945 7.43902 8.60851 7.38916L10.7288 5.62478C11.007 5.39303 10.8638 4.93066 10.5056 4.90741L7.73701 4.72741C7.66246 4.72212 7.59096 4.69577 7.53081 4.65142C7.47066 4.60707 7.42435 4.54656 7.39726 4.47691L6.36451 1.87666C6.33638 1.80276 6.28647 1.73916 6.22137 1.69428C6.15627 1.6494 6.07907 1.62537 6.00001 1.62537C5.92094 1.62537 5.84374 1.6494 5.77864 1.69428C5.71354 1.73916 5.66363 1.80276 5.63551 1.87666L4.60276 4.47691C4.57572 4.54663 4.52943 4.60722 4.46928 4.65164C4.40913 4.69606 4.33759 4.72246 4.26301 4.72778L1.49438 4.90778C1.13663 4.93066 0.992631 5.39303 1.27126 5.62478L3.39151 7.38953C3.4505 7.43936 3.49424 7.50481 3.51772 7.57837C3.54121 7.65193 3.54347 7.73062 3.52426 7.80541L2.89126 10.2973C2.78363 10.7207 3.23401 11.0623 3.59626 10.8324L5.79376 9.44078C5.85552 9.40152 5.92719 9.38066 6.00038 9.38066C6.07357 9.38066 6.14524 9.40152 6.20701 9.44078H6.20663Z"/>
                                 </svg>
                             </li>
                         </ul>
                     </a>
                     <div class="cards-md__info-right">
-                        <span class="action-btn">
-                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6.66667 8.83333H4.16667L2.5 18H17.5L15.8333 8.83333H13.3333M6.66667 8.83333V6.33333C6.66667 4.49239 8.15905 3 10 3V3C11.8409 3 13.3333 4.49238 13.3333 6.33333V8.83333M6.66667 8.83333H13.3333M6.66667 8.83333V11.3333M13.3333 8.83333V11.3333"
-                                      stroke="currentColor" stroke-width="1.3" stroke-linecap="round"
-                                      stroke-linejoin="round"></path>
-                            </svg>
-                        </span>
+                        <form th:action="@{/shopping-cart/add}" method="post">
+                            <input type="hidden" name="productId" th:value="${product.id}"/>
+                            <button type="submit" class="action-btn">
+                                <svg width="20" height="21" viewBox="0 0 20 21" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                            d="M6.66667 8.83333H4.16667L2.5 18H17.5L15.8333 8.83333H13.3333M6.66667 8.83333V6.33333C6.66667 4.49239 8.15905 3 10 3V3C11.8409 3 13.3333 4.49238 13.3333 6.33333V8.83333M6.66667 8.83333H13.3333M6.66667 8.83333V11.3333M13.3333 8.83333V11.3333"
+                                            stroke="currentColor"
+                                            stroke-width="1.3"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                    ></path>
+                                </svg>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -852,8 +851,8 @@
                         <div class="cards-ss__content text-center">
                             <h6 class="font-body--md-500">Oferte speciale</h6>
                             <h5 class="font-title--lg">Alimente salvate</h5>
-                            <div class="countdown-clock">Numărătoarea s-a încheiat!</div>
-                            <a href="#" class="button button--md">Cumpără acum
+                            <div class="countdown-clock">Profită de ofertele noastre !</div>
+                            <a th:href="@{/shop}" class="button button--md">Cumpără acum
                                 <span>
                                     <svg width="17" height="15" viewBox="0 0 17 15" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -877,9 +876,9 @@
                             <h6 class="font-body--md-500">Ofertă exclusivă</h6>
                             <h2 class="font-title--lg">Produse salvate</h2>
                             <div class="cards-ss__saleoff">
-                                <p>Reduceri de până la<span style="margin-left: 5px;">34%</span></p>
+                                <p>Reduceri de până la<span style="margin-left: 5px;">65%</span></p>
                             </div>
-                            <a href="#" class="button button--md">Cumpără acum
+                            <a th:href="@{/shop}" class="button button--md">Cumpără acum
                                 <span>
                                     <svg width="17" height="15" viewBox="0 0 17 15" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -901,11 +900,11 @@
                              style="border-radius: 20px; object-fit: cover; width: 100%;"/>
                         <div class="cards-ss__content text-center">
                             <h6 class="font-body--md-500">Stoc limitat</h6>
-                            <h5 class="font-title--lg">Selecție verde</h5>
+                            <h5 class="font-title--lg">Preț redus</h5>
                             <div class="cards-ss__startpackage">
-                                <p>Începând de la <span class="font-body--xxl-600">19.99 MDL</span></p>
+                                <p>Începând de la <span class="font-body--xxl-600">7.5 MDL</span></p>
                             </div>
-                            <a href="#" class="button button--md">Cumpără acum
+                            <a th:href="@{/shop}" class="button button--md">Cumpără acum
                                 <span>
                                     <svg width="17" height="15" viewBox="0 0 17 15" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -926,7 +925,104 @@
 <!-- Cyclone Sale Section End -->
 
 <!-- Featured Products Start -->
-<div th:replace="~{/fragments/featured-products :: featuredProducts}"></div>
+<section class="section section--lg featured pb-0"  style="margin-top: -80px;">
+    <div class="container">
+        <div class="section__head">
+            <h2 class="section--title-one font-title--sm">Produse recomandate</h2>
+            <a th:href="@{/shop}">Vezi toate
+                <span>
+                    <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 7.50049H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                        <path d="M9.95001 1.47559L16 7.49959L9.95001 13.5246" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+        </div>
+        <div class="swiper-container featured-slider--one">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" th:each="product : ${recommendedProducts}">
+                    <div class="cards-md cards-md--four w-100">
+                        <div class="cards-md__img-wrapper">
+                            <a th:href="@{/product-details(id=${product.id})}">
+                                <img th:src="@{${product.productImage}}" alt="products"/>
+                            </a>
+                            <span class="tag danger font-body--md-400"
+                                  th:text="'-' + ${product.productDiscount.percent} + '%'"
+                                  th:if="${product.productDiscount != null && product.productDiscount.percent > 0}"></span>
+                            <div class="cards-md__favs-list">
+                                        <span class="action-btn">
+                                            <svg width="20" height="18" viewBox="0 0 20 18" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9.9996 16.5451C-6.66672 7.3333 4.99993 -2.6667 9.9996 3.65668C14.9999 -2.6667 26.6666 7.3333 9.9996 16.5451Z"
+                                                      stroke="currentColor" stroke-width="1.5"></path>
+                                            </svg>
+                                        </span>
+                                <span class="action-btn" data-bs-toggle="modal" data-bs-target="#productView">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                        d="M10 3.54102C3.75 3.54102 1.25 10.0001 1.25 10.0001C1.25 10.0001 3.75 16.4577 10 16.4577C16.25 16.4577 18.75 10.0001 18.75 10.0001C18.75 10.0001 16.25 3.54102 10 3.54102V3.54102Z"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.5"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                ></path>
+                                                <path
+                                                        d="M10 13.125C10.8288 13.125 11.6237 12.7958 12.2097 12.2097C12.7958 11.6237 13.125 10.8288 13.125 10C13.125 9.1712 12.7958 8.37634 12.2097 7.79029C11.6237 7.20424 10.8288 6.875 10 6.875C9.1712 6.875 8.37634 7.20424 7.79029 7.79029C7.20424 8.37634 6.875 9.1712 6.875 10C6.875 10.8288 7.20424 11.6237 7.79029 12.2097C8.37634 12.7958 9.1712 13.125 10 13.125V13.125Z"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.5"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                ></path>
+                                            </svg>
+                                        </span>
+                            </div>
+                        </div>
+                        <div class="cards-md__info d-flex justify-content-between align-items-center">
+                            <a th:href="@{/product-details(id=${product.id})}" class="cards-md__info-left">
+                                <h6 class="font-body--md-400" th:text="${product.name}"></h6>
+                                <div class="cards-md__info-price">
+                                    <span class="font-body--lg-500" th:text="${product.finalPrice} + ' MDL'"></span>
+                                    <del class="font-body--lg-400" th:text="${product.initialPrice} + ' MDL'"></del>
+                                </div>
+                                <ul class="cards-md__info-rating d-flex">
+                                    <li th:each="i : ${#numbers.sequence(1,5)}">
+                                        <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path th:attr="fill=${i <= product.rating} ? '#FF8A00' : '#CCCCCC'"
+                                                  d="M6.20663 9.44078L8.57101 10.9385C8.87326 11.1298 9.24826 10.8452 9.15863 10.4923L8.47576 7.80541C8.45647 7.73057 8.45869 7.6518 8.48217 7.57816C8.50566 7.50453 8.54945 7.43902 8.60851 7.38916L10.7288 5.62478C11.007 5.39303 10.8638 4.93066 10.5056 4.90741L7.73701 4.72741C7.66246 4.72212 7.59096 4.69577 7.53081 4.65142C7.47066 4.60707 7.42435 4.54656 7.39726 4.47691L6.36451 1.87666C6.33638 1.80276 6.28647 1.73916 6.22137 1.69428C6.15627 1.6494 6.07907 1.62537 6.00001 1.62537C5.92094 1.62537 5.84374 1.6494 5.77864 1.69428C5.71354 1.73916 5.66363 1.80276 5.63551 1.87666L4.60276 4.47691C4.57572 4.54663 4.52943 4.60722 4.46928 4.65164C4.40913 4.69606 4.33759 4.72246 4.26301 4.72778L1.49438 4.90778C1.13663 4.93066 0.992631 5.39303 1.27126 5.62478L3.39151 7.38953C3.4505 7.43936 3.49424 7.50481 3.51772 7.57837C3.54121 7.65193 3.54347 7.73062 3.52426 7.80541L2.89126 10.2973C2.78363 10.7207 3.23401 11.0623 3.59626 10.8324L5.79376 9.44078C5.85552 9.40152 5.92719 9.38066 6.00038 9.38066C6.07357 9.38066 6.14524 9.40152 6.20701 9.44078H6.20663Z"/>
+                                        </svg>
+                                    </li>
+                                </ul>
+                            </a>
+                            <div class="cards-md__info-right">
+                                <form th:action="@{/shopping-cart/add}" method="post">
+                                    <input type="hidden" name="productId" th:value="${product.id}"/>
+                                    <button type="submit" class="action-btn">
+                                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                    d="M6.66667 8.83333H4.16667L2.5 18H17.5L15.8333 8.83333H13.3333M6.66667 8.83333V6.33333C6.66667 4.49239 8.15905 3 10 3V3C11.8409 3 13.3333 4.49238 13.3333 6.33333V8.83333M6.66667 8.83333H13.3333M6.66667 8.83333V11.3333M13.3333 8.83333V11.3333"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.3"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                            ></path>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-pagination featured-pagination"></div>
+        </div>
+    </div>
+</section>
 <!-- Featured Products End -->
 
 <!-- Promotional Banner Start -->
@@ -936,9 +1032,9 @@
             <img th:src="@{/images/promotions/special-deal.jpg}" alt="banner"/>
             <div class="banner-sale__text-content">
                 <h5>Produse sigure</h5>
-                <h2>20% <span>Reducere</span></h2>
-                <p class="font-body--lg-400">Alimente salvate, proaspete și livrate cu grijă</p>
-                <a href="#" class="button button--md">Cumpără acum
+                <h2>începând cu 50% <span>Reducere</span></h2>
+                <p class="font-body--lg-400">Cumpără acum și preia comanda direct din magazine!</p>
+                <a th:href="@{/shop}" class="button button--md">Cumpără acum
                     <span>
                         <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16 7.50049H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -958,7 +1054,7 @@
 <section class="news section section--lg" style="margin-top: 5px;">
     <div class="container">
         <div class="section__head justify-content-center">
-            <h2 class="section--title-one font-title--sm text-center">Informații utile</h2>
+            <h2 class="section--title-one font-title--sm text-center">Inspirație și sfaturi</h2>
         </div>
         <div class="news-slider--one swiper-container">
             <div class="swiper-wrapper">
@@ -968,7 +1064,7 @@
                             <img src="" alt="img-01"/>
                             <div class="date">
                                 <h3 class="font-body--xxl-500">18</h3>
-                                <span class="font-body--sm-500">Dec</span>
+                                <span class="font-body--sm-500">Septembrie</span>
                             </div>
                         </div>
                         <div class="cards-blog__info">

@@ -48,4 +48,11 @@ public class CategoryServiceImpl implements CategoryService {
 
         return categoryCountMap;
     }
+
+    @Override
+    public List<Category> getAllCategories() {
+        return categoryRepository.findAll(); //3
+    }
+
+
 }

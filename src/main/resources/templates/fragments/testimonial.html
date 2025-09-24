@@ -23,24 +23,22 @@
         </div>
         <div class="swiper-container testimonial-slider--one">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                <div class="swiper-slide" th:each="review : ${reviews}">
                     <div class="cards-tm">
-                        <p class="cards-tm__text font-body--md-400">Produsele sunt excelente și proaspete. Livrarea a
-                            fost rapidă, iar inițiativa de reducere a risipei alimentare este foarte apreciată. Recomand
-                            cu drag!</p>
+                        <p class="cards-tm__text font-body--md-400" th:text="${review.review}">Recenzia utilizatorului</p>
                         <div class="cards-tm__info d-flex align-items-center justify-content-between">
                             <div class="cards-tm__info-left d-flex align-items-center">
                                 <div class="cards-tm__info--user-img">
-                                    <img src="" alt="user"/>
+                                    <img th:src="@{${review.userImage}}" alt="user"/>
                                 </div>
                                 <div class="cards-tm__info-left--designation">
-                                    <h2 class="font-body--lg-500">Popescu Ion</h2>
+                                    <h2 class="font-body--lg-500" th:text="${review.reviewerName}">Nume Utilizator</h2>
                                     <span class="font-body--md-400">Customer</span>
                                 </div>
                             </div>
                             <div class="cards-tm__info-right">
                                 <ul class="d-flex align-items-center">
-                                    <li>
+                                    <li th:each="star : ${#numbers.sequence(1, review.rating)}">
                                         <span>
                                             <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
