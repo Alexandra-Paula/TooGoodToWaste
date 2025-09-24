@@ -1,21 +1,18 @@
-# Java files 
-*.java linguist-detectable=true
 
-# Maven wrapper scripts
+*.java linguist-detectable=true
 /mvnw text eol=lf linguist-detectable=false
 *.cmd text eol=crlf linguist-detectable=false
-
-# Config and resources
 *.xml linguist-detectable=false
 *.properties linguist-detectable=false
-
-# Front-end files 
+*.yml linguist-detectable=false
 *.css linguist-detectable=false
 *.scss linguist-detectable=false
 *.html linguist-detectable=false
 *.js linguist-detectable=false
-
-# Notebooks 
 *.ipynb linguist-detectable=false
 *.jar linguist-detectable=false
 *.class linguist-detectable=false
+*.png linguist-detectable=false
+*.jpg linguist-detectable=false
+*.jpeg linguist-detectable=false
+*.svg linguist-detectable=false
