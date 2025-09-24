@@ -44,13 +44,13 @@
                         </select>
                         <select id="selectbox2" class="header__dropdown-menu" onchange="location = this.value;">
                             <option value="" selected disabled>Legal și politici</option>
-                            <option value="#">Termeni de utilizare</option>
-                            <option value="#">Politica de confidențialitate</option>
-                            <option value="#">Vânzări și rambursări</option>
+                            <option th:value="@{/termsOfUse}">Termeni de utilizare</option>
+                            <option th:value="@{/privacyPolicy}">Politica de confidențialitate</option>A
+                            <option th:value="@{/salesAndRefunds}">Vânzări și rambursări</option>
                         </select>
                     </div>
                     <div class="header__in">
-                        <a href="sign-in.html">Autentificare</a>
+                        <a th:href="@{login}">Autentificare</a>
                         <span>/</span>
                         <a th:href="@{register}">Creare cont</a>
                     </div>

@@ -36,12 +36,4 @@ public class HomeController {
         model.addAttribute("page", "home");
         return "index";
     }
-
-//    @GetMapping("/header")
-//    public String header(Model model) {
-//        model.addAttribute("categories", categoryService.getAllCategories());
-//        model.addAttribute("page", "header");
-//        return "header";
-//    }
-
 }
