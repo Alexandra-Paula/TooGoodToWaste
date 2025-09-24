@@ -9,4 +9,12 @@ public class LegalController {
         public String showPrivacyPolicy() {
             return "privacyPolicy";
         }
+    @GetMapping("/termsOfUse")
+    public String showTermsOfUse() {
+        return "termsOfUse";
+    }
+    @GetMapping("/salesAndRefunds")
+    public String showSalesAndRefunds() {
+        return "salesAndRefunds";
+    }
 }

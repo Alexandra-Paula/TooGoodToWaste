@@ -24,8 +24,8 @@
 </nav>
 <!-- Navbar End -->
 
-<!-- Header Start -->
-<header class="header">
+<!-- Header Start: afișează doar dacă nu există produse -->
+<header class="header" th:if="${allChats == null or #lists.isEmpty(allChats)}">
     <div class="header__title">
         <h1>Bună !</h1>
         <h2>Cu ce te pot ajuta astăzi ?</h2>
@@ -33,7 +33,7 @@
     <div class="suggests">
         <div class="suggests__item">
             <p class="suggests__item-text">
-                Care sunt beneficiile cumpărării produselor eco-friendly ?
+                Care e scopul platformei TooGoodToWaste ?
             </p>
             <div class="suggests__item-icon">
                 <i class='bx bx-leaf'></i>
@@ -41,7 +41,7 @@
         </div>
         <div class="suggests__item">
             <p class="suggests__item-text">
-                Care este scopul aplicației și cum ajută la reducerea risipei alimentare ?
+                Cum ajută această platformă la reducerea risipei alimentare ?
             </p>
             <div class="suggests__item-icon">
                 <i class='bx bx-upload'></i>
@@ -67,32 +67,68 @@
 </header>
 <!-- Header End -->
 
-<!-- Chat Section -->
-<section class="chats"></section>
+<section class="chats">
+    <!-- Iterăm peste toate mesajele din model -->
+    <div th:each="msg : ${allChats}">
+        <!-- Mesajul trimis de user -->
+        <div class="message message--outgoing">
+            <div class="message__content">
+                <img class="message__avatar"  th:src="@{/images/assets/user.png}" alt="User avatar" />
+                <p class="message__text" th:text="${msg.prompt}"></p>
+            </div>
+        </div>
+
+        <!-- Mesajul venit de la AI -->
+        <div class="message message--incoming">
+            <div class="message__content">
+                <img class="message__avatar" th:src="@{/images/assets/waste.svg}" alt="Terra avatar" />
+                <p class="message__text" th:text="${msg.message}"></p>
+
+                <div class="message__loading-indicator hide">
+                    <div class="message__loading-bar"></div>
+                    <div class="message__loading-bar"></div>
+                    <div class="message__loading-bar"></div>
+                </div>
+            </div>
+            <span onClick="copyMessageToClipboard(this)" class="message__icon">
+                <i class='bx bx-copy-alt'></i>
+            </span>
+        </div>
+    </div>
+</section>
+
 
 <!-- Input Prompt Start -->
+<!-- Input Prompt Start -->
 <section class="prompt">
-    <form action="#" class="prompt__form" novalidate>
+    <form method="post" id="chatForm" class="prompt__form" novalidate>
+        <!-- Hidden input for logged-in user -->
+        <input type="hidden" id="currentUserId" th:value="${user != null ? user.id : ''}" />
+
         <div class="prompt__input-wrapper">
-            <input type="text" placeholder="Scrie întrebarea ta aici" class="prompt__form-input" required>
-            <button class="prompt__form-button" id="sendButton">
+            <input type="text" name="message" placeholder="Scrie întrebarea ta aici" class="prompt__form-input" required>
+            <button class="prompt__form-button" id="sendButton" type="submit">
                 <i class='bx bx-send'></i>
-            </button>
-            <button class="prompt__form-button" id="deleteButton">
-                <i class='bx bx-trash'></i>
             </button>
         </div>
     </form>
+
+    <form th:action="@{/chat/delete}" method="post" id="deleteChatForm">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <button type="submit" class="prompt__form-button" id="deleteButton" style="margin-right: 415px; margin-top: -23px;">
+            <i class='bx bx-trash pulse-js'></i>
+        </button>
+    </form>
+
     <p class="prompt__disclaim">
         Răspunsurile pot să nu fie întotdeauna pe deplin corecte sau actualizate, te rugăm să verifici informațiile importante.
     </p>
 </section>
 <!-- Input Prompt End -->
-
 <!-- JavaScript Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="../../../../../Desktop/Day%20%2378%20-%20Google%20Gemini%20Clone/script.js"></script>
+<script src="/js/chat.js"></script>
 </body>
 
 </html>

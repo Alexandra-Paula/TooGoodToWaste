@@ -38,9 +38,10 @@ SecurityConfig {
                                 .requestMatchers("/forgotPassword/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/reset-password/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/reset-password/**").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/chat/respond/**").permitAll()
                                 .requestMatchers(
                                         "/css/**", "/js/**", "/images/**", "/lib/**", "/scss/**",
-                                        "/index", "/login/**","/forgotPassword/**", "/reset-password/**", "/blog/**", "/chat", "/about", "/privacyPolicy", "/shop"
+                                        "/index", "/login/**","/forgotPassword/**", "/reset-password/**", "/blog/**", "/chat", "/about", "/privacyPolicy", "/shop", "/chat/delete/**","/termsOfUse","/salesAndRefunds"
                                 ).permitAll()
                                 .anyRequest().authenticated()
                 )

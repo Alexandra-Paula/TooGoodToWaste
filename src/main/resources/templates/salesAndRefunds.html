@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ro" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vânzări și rambursări </title>
+    <!-- Favicon Image -->
+    <link rel="icon" type="image/png" th:href="@{/images/assets/favicon.svg}"/>
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" th:href="@{/lib/css/swiper-bundle.min.css}"/>
+    <link rel="stylesheet" th:href="@{/lib/css/bvselect.css}"/>
+    <link rel="stylesheet" th:href="@{/lib/css/venobox.css}"/>
+    <link rel="stylesheet" th:href="@{/lib/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<!-- Spinner Start -->
+<div th:replace="~{/fragments/spinner :: spinner}"></div>
+<!-- Spinner End -->
+<!-- Shopping Cart sidebar  start  -->
+<div th:replace="~{/fragments/shopping-cart-sidebar :: shoppingCartSidebar}"></div>
+<!-- Shopping Cart Sidebar End -->
+<!-- Header Section Start -->
+<div th:replace="~{/fragments/header :: header}"></div>
+<!-- Header Section End -->
+<!-- breedcrumb section start  -->
+<div class="section breedcrumb">
+    <div class="breedcrumb__img-wrapper">
+        <img src="/images/banner/breedcrumb.jpg" alt="breedcrumb" />
+        <div class="container">
+            <ul class="breedcrumb__content">
+                <li>
+                    <a href="../../../../../TooGoodToWasteSanda/src/main/resources/templates/index.html">
+                        <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                    d="M1 8L9 1L17 8V18H12V14C12 13.2044 11.6839 12.4413 11.1213 11.8787C10.5587 11.3161 9.79565 11 9 11C8.20435 11 7.44129 11.3161 6.87868 11.8787C6.31607 12.4413 6 13.2044 6 14V18H1V8Z"
+                                    stroke="#808080"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                            />
+                        </svg>
+                        <span> > </span>
+                    </a>
+                </li>
+                <li class="active"><a href="about.html">Despre</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- breedcrumb section end   -->
+<div class="terms-container" style="max-width: 800px; margin: 0 auto; padding: 20px">
+    <h1 class="text-center" style="font-family: 'Arial', sans-serif; font-size: 32px; color: #81c408; font-weight: bold;">Vânzări și Rambursări</h1>
+    <p class="text-center" style="font-size: 14px; color: #888; margin-bottom: 30px;">Ultima actualizare: 15 august 2025</p>
+    <p style="font-size: 16px; line-height: 1.6; color: #555; text-align: justify; margin-bottom: 30px;">
+        Această Politică de Vânzări și Rambursări descrie termenii în care achizițiile pot fi returnate sau rambursate și explică responsabilitățile atât ale cumpărătorilor, cât și ale vânzătorilor atunci când utilizează platforma ToGoodToWaste.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">1. Politica de vânzare</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+        Prin finalizarea unei achiziții pe ToGoodToWaste, ești de acord cu următoarele:
+    </p>
+    <ul style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+        <li><strong>Vânzare finală:</strong> Toate vânzările sunt finale, cu excepția cazului în care se specifică altfel în descrierea produsului.</li>
+        <li><strong>Disponibilitatea produselor:</strong> Dacă un produs nu mai este disponibil după ce a fost achiziționat, vei fi notificat(ă) și vei primi o rambursare.</li>
+    </ul>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">2. Politica de rambursare</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+        Rambursările sunt disponibile în următoarele condiții:
+    </p>
+    <ul style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+        <li><strong>Eligibilitate:</strong> Rambursările pot fi solicitate în termen de 30 de zile de la achiziție pentru produsele eligibile, cu condiția ca acestea să fie neutilizate și în stare originală.</li>
+        <li><strong>Procesul de solicitare:</strong> Pentru a solicita o rambursare, urmează acești pași:
+            <ul style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+                <li>1. Trimite un email la <a style="color: #81c408; text-decoration: none;">team.togoodtowaste@gmail.com</a> cu subiectul „Solicitare rambursare” și include următoarele detalii:
+                    <ul style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+                        <li>Numărul comenzii tale</li>
+                        <li>Produsul(ele) pe care dorești să le returnezi</li>
+                        <li>Motivul returului</li>
+                        <li>Datele tale de contact (email și număr de telefon)</li>
+                    </ul>
+                </li>
+                <li>2. Alternativ, ne poți contacta telefonic la <strong>+0123 4567 8910</strong> în timpul programului de lucru (9:00 - 18:00, luni-vineri).</li>
+                <li>3. După ce primim solicitarea ta, o vom procesa și îți vom trimite instrucțiunile pentru returnarea produselor și primirea rambursării.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">3. Responsabilitățile vânzătorilor</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+        Vânzătorii trebuie să respecte politica lor de returnare și rambursare. Nerespectarea acestei politici poate duce la suspendarea contului sau alte penalizări.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">4. Dispute</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+        În cazul unei dispute între cumpărător și vânzător, ToGoodToWaste va media procesul. Dacă este necesar, putem interveni pentru a asigura o rezolvare corectă, conform politicilor platformei.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">5. Modificări ale acestei politici</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+        Ne rezervăm dreptul de a actualiza Politica de Vânzări și Rambursări periodic. Orice modificări vor fi publicate pe această pagină, iar noi te încurajăm să o consulți regulat.
+    </p>
+
+    <h2 style="font-size: 22px; color: #81c408; margin-bottom: 15px;">6. Contact</h2>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 20px;">
+        Dacă ai întrebări legate de această politică, ne poți contacta:
+    </p>
+    <p style="font-size: 16px; color: #555; margin-bottom: 10px;">
+        Email:<a style="color: #81c408; text-decoration: none;">team.togoodtowaste@gmail.com</a>
+    </p>
+    <p style="font-size: 16px; color: #555;">
+        Telefon: +0123 4567 8910
+    </p>
+</div>
+<!-- Main Section End -->
+<!--Footer Section Start  -->
+<div th:replace="~{/fragments/footer :: footer}"></div>
+<!--Footer Section end  -->
+<script src="/lib/js/jquery.min.js"></script>
+<script src="/lib/js/swiper-bundle.min.js"></script>
+<script src="/lib/js/bvselect.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
