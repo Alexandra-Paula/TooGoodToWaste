@@ -1,5 +1,6 @@
 package org.application.waste.service;
 
+import jakarta.transaction.Transactional;
 import org.application.waste.dto.ProductDto;
 import org.application.waste.entity.Category;
 import org.application.waste.entity.Product;
@@ -251,5 +252,25 @@ public class ProductServiceImpl implements ProductService {
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
-
+    @Override
+    @Transactional
+    public List<Map<String, Object>> getProductsForAssistant() {
+        List<Product> products = productRepository.findAll();
+        return products.stream().map(product -> {
+            String categoryName = product.getCategory() != null ? product.getCategory().getCategoryName() : null;
+            Map<String, Object> info = new LinkedHashMap<>();
+            info.put("name", product.getName());
+            info.put("category", categoryName);
+            info.put("quantity", product.getQuantity() + " " + product.getUnit());
+            info.put("quality", product.getQuality());
+            info.put("finalPrice", product.getFinalPrice());
+            info.put("pickupAddress", product.getPickupAddress());
+            info.put("discount", product.getProductDiscount() != null ?
+                    product.getProductDiscount().getPercent() + "% reducere" : "Fără reducere");
+            info.put("description", product.getDescription());
+            info.put("rating", product.getRating() + "/5");
+            info.put("availability", product.getAvailability().toString());
+            return info;
+        }).toList();
+    }
 }

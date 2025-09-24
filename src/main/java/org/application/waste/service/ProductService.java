@@ -5,10 +5,11 @@ import org.application.waste.dto.ProductDto;
 import org.application.waste.entity.Category;
 import org.application.waste.entity.Product;
 import org.application.waste.entity.ProductLink;
-
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+
 
 public interface ProductService {
     void saveProduct(@Valid Product product);
@@ -38,6 +39,8 @@ public interface ProductService {
     List<ProductDto> getRecommendedProducts();
 
     List<Category> getAllCategories();
+
+    List<Map<String, Object>> getProductsForAssistant();
 
 
 }
