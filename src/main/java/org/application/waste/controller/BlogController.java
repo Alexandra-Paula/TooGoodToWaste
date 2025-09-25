@@ -14,7 +14,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Controller
 public class BlogController {
@@ -45,29 +48,32 @@ public class BlogController {
         // Generezi un nume unic pentru fișier
         String fileName = UUID.randomUUID() + "_" + imageFile.getOriginalFilename();
 
-        // Stabilești directorul unde salvezi
-        String uploadDir = "uploads/";
+        // Directorul relativ la proiect
+        String uploadDir = "src/main/resources/static/images/uploads/";
 
         // Creezi path-ul complet
-        Path path = Paths.get(uploadDir + fileName);
+        Path path = Paths.get(uploadDir, fileName);
 
-        // Salvezi pe disc
+        // Creezi directoarele dacă nu există
         Files.createDirectories(path.getParent());
+
+        // Scrii fișierul pe disc
         Files.write(path, imageFile.getBytes());
 
-        // Calea relativă pe care o pui în entitate
-        String relativePath = "src/main/resources/static/images/uploads/" + fileName;
+        // Calea relativă pe care o salvezi în DB
+        String relativePath = "/images/uploads/" + fileName;
 
         blogService.saveBlog(blogDto, relativePath);
 
         return "redirect:/blog?success";
     }
 
-    /*
     // Listă bloguri
     @GetMapping("/blog/list")
     public String listBlogs(Model model) {
         model.addAttribute("blogs", blogService.findAllBlogs());
+
+
         return "blog-list";
     }
 
@@ -75,7 +81,7 @@ public class BlogController {
     @GetMapping("/blog/{id}")
     public String viewBlog(@PathVariable Long id, Model model) {
         model.addAttribute("blog", blogService.findById(id));
-        return "viewBlog";
+        return "single-blog";
     }
 
     // Șterge un blog
@@ -84,5 +90,4 @@ public class BlogController {
         blogService.deleteBlog(id);
         return "redirect:/blog?deleted";
     }
-    */
 }

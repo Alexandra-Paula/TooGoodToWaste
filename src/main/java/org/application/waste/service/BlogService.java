@@ -11,7 +11,7 @@ public interface BlogService {
 
     Blog findById(Long id);
 
-    List<Blog> findAllBlogs();
+    List<BlogDto> findAllBlogs();
 
     void saveBlog(@Valid BlogDto blogDto, String imageFile);
 
