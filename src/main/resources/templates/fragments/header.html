@@ -1,4 +1,4 @@
-<header class="header header--one" th:fragment="header">
+<header class="header header--one" th:fragment="header" xmlns:sec="http://www.w3.org/1999/xhtml">
     <div class="header__top">
         <div class="container">
             <div class="header__top-content">
@@ -50,9 +50,18 @@
                         </select>
                     </div>
                     <div class="header__in">
-                        <a th:href="@{login}">Autentificare</a>
-                        <span>/</span>
-                        <a th:href="@{register}">Creare cont</a>
+                        <!-- dacă nu ești autentificat -->
+                        <span sec:authorize="!isAuthenticated()">
+        <a th:href="@{/login}">Autentificare</a>
+        <span>/</span>
+        <a th:href="@{/register}">Creare cont</a>
+    </span>
+
+                        <!-- dacă ești autentificat -->
+                        <span sec:authorize="isAuthenticated()">
+        <span th:text="${#authentication.name}">Username</span> |
+        <a th:href="@{/logout}">Deconectare</a>
+    </span>
                     </div>
                 </div>
             </div>
