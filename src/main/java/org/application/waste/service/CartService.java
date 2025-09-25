@@ -14,4 +14,6 @@ public interface CartService {
     void updateItemQuantity(Long userId, Long itemId, int newQuantity);
 
     double getCartTotal(Long userId);
+
+    void clearCart(Long userId);
 }
