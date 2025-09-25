@@ -21,4 +21,6 @@ public class CartItemDto {
     private double finalPrice;
 
     private String productImage;
+
+    private String unit;
 }
