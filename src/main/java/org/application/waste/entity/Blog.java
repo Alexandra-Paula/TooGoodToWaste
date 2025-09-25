@@ -18,10 +18,16 @@ public class Blog {
     private Long id;
 
     @NotBlank(message = "Titlul este obligatoriu")
+    @Column(name = "title", length = 500)
     private String title;
 
     @NotBlank(message = "Conținutul nu poate fi gol")
+
+    @Column(name = "content", columnDefinition = "TEXT")
     private String content;
+
+    @Column(name = "imageUrl", columnDefinition = "TEXT")
     private String imageUrl;
+
     private LocalDateTime createdAt;
 }
