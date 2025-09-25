@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Tags -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+  <!-- Page Title -->
+  <title>FAQ | TooGoodToWaste</title>
+
+  <!-- Favicon Image -->
+  <link rel="icon" type="image/png" th:href="@{/images/assets/favicon.svg}"/>
+
+
+
+  <link rel="stylesheet" th:href="@{/lib/css/swiper-bundle.min.css}"/>
+  <link rel="stylesheet" th:href="@{/lib/css/bvselect.css}"/>
+  <link rel="stylesheet" th:href="@{/lib/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+  <body>
+  <!-- Spinner Start -->
+  <div th:replace="~{/fragments/spinner :: spinner}"></div>
+  <!-- Spinner End -->
+    <!-- Shopping Cart sidebar  start  -->
+    <div class="shopping-cart">
+      <div class="shopping-cart-top">
+        <div class="shopping-cart-header">
+          <h5 class="font-body--xxl-500">
+            Shopping Cart (<span class="count">2</span>)
+          </h5>
+          <button class="close">
+            <svg
+              width="45"
+              height="45"
+              viewBox="0 0 45 45"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="22.5" cy="22.5" r="22.5" fill="white" />
+              <path
+                d="M28.75 16.25L16.25 28.75"
+                stroke="#1A1A1A"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16.25 16.25L28.75 28.75"
+                stroke="#1A1A1A"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="shopping-cart__product-content">
+          <div class="shopping-cart__product-content-item">
+            <div class="img-wrapper">
+              <img src="src/images/products/img-01.png" alt="product" />
+            </div>
+            <div class="text-content">
+              <h5 class="font-body--md-400">Fresh Indian Orange</h5>
+              <p class="font-body--md-400">
+                1kg x <span class="font-body--md-500">12.00</span>
+              </p>
+            </div>
+          </div>
+          <button class="delete-item">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 23C18.0748 23 23 18.0748 23 12C23 5.92525 18.0748 1 12 1C5.92525 1 1 5.92525 1 12C1 18.0748 5.92525 23 12 23Z"
+                stroke="#CCCCCC"
+                stroke-miterlimit="10"
+              />
+              <path
+                d="M16 8L8 16"
+                stroke="#666666"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16 16L8 8"
+                stroke="#666666"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="shopping-cart__product-content">
+          <div class="shopping-cart__product-content-item">
+            <div class="img-wrapper">
+              <img src="src/images/products/img-01.png" alt="product" />
+            </div>
+            <div class="text-content">
+              <h5 class="font-body--md-400">Fresh Indian Orange</h5>
+              <p class="font-body--md-400">
+                1kg x <span class="font-body--md-500">12.00</span>
+              </p>
+            </div>
+          </div>
+          <button class="delete-item">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 23C18.0748 23 23 18.0748 23 12C23 5.92525 18.0748 1 12 1C5.92525 1 1 5.92525 1 12C1 18.0748 5.92525 23 12 23Z"
+                stroke="#CCCCCC"
+                stroke-miterlimit="10"
+              />
+              <path
+                d="M16 8L8 16"
+                stroke="#666666"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16 16L8 8"
+                stroke="#666666"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="shopping-cart-bottom">
+        <div class="shopping-cart-product-info">
+          <p class="product-count font-body--lg-400">2 Product</p>
+          <span class="product-price font-body--lg-500">$26.00</span>
+        </div>
+
+        <form action="#">
+          <button class="button button--lg w-100">Checkout</button>
+          <a href="shopping-cart.html" class="button button--lg button--disable w-100">
+            go to cart
+          </a>
+        </form>
+      </div>
+    </div>
+    <!-- Shopping Cart sidebar  end -->
+    <!-- Header Section Start -->
+    <div th:replace="~{/fragments/header :: header}"></div>
+    <!-- Header Section End -->
+
+    <!-- Banner Section Start -->
+    <div class="section breedcrumb">
+      <div class="breedcrumb__img-wrapper">
+        <img th:src="@{/images/banner/main-banner.jpg}" alt="breedcrumb"/>
+        <div class="container">
+          <ul class="breedcrumb__content">
+            <li>
+              <a href="index.html">
+                <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 8L9 1L17 8V18H12V14C12 13.2044 11.6839 12.4413 11.1213 11.8787C10.5587 11.3161 9.79565 11 9 11C8.20435 11 7.44129 11.3161 6.87868 11.8787C6.31607 12.4413 6 13.2044 6 14V18H1V8Z"
+                        stroke="#808080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>></span>
+              </a>
+            </li>
+            <li class="active"><a href="create-account.html">Creare cont</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Section End -->
+
+    <section class="section section--xl faq">
+      <div class="container">
+        <div class="row faq__content">
+          <div class="col-lg-6 order-lg-0 order-1">
+            <div class="faq__accordion">
+              <h5 class="font-title--xl">Bun venit <br> Hai să vorbim despre întrebările noastre frecvente</h5>
+              <div class="accordion" id="faq-accordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      De ce produsele sunt mai ieftine pe platforma voastră?
+                      <span class="icon">
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            width="32"
+                            height="32"
+                            rx="16"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M12.0001 16H20.0001M16.0001 12V20V12Z"
+                            stroke="#1A1A1A"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseOne"
+                    class="accordion-collapse collapse show"
+                    aria-labelledby="headingOne"
+                    data-bs-parent="#faq-accordion"
+                  >
+                    <div class="accordion-body">
+                      Produsele listate provin din magazine și patiserii care au surplus
+                      sau se apropie de data de expirare. Ele sunt încă sigure pentru consum,
+                      dar pentru a evita risipa alimentară sunt vândute la prețuri reduse.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo"
+                    >
+                      Este sigur să cumpăr produse aproape de expirare?
+                      <span class="icon">
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            width="32"
+                            height="32"
+                            rx="16"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M12.0001 16H20.0001M16.0001 12V20V12Z"
+                            stroke="#1A1A1A"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseTwo"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingTwo"
+                    data-bs-parent="#faq-accordion"
+                  >
+                    <div class="accordion-body">
+                      Da. Toate produsele respectă normele de siguranță alimentară și sunt
+                      vândute înainte de data de expirare. Colaborăm direct cu
+                      partenerii noștri pentru a garanta calitatea și prospețimea produselor.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                    >
+                      Pot returna produsele cumpărate?
+                      <span class="icon">
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            width="32"
+                            height="32"
+                            rx="16"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M12.0001 16H20.0001M16.0001 12V20V12Z"
+                            stroke="#1A1A1A"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseThree"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingThree"
+                    data-bs-parent="#faq-accordion"
+                  >
+                    <div class="accordion-body">
+                      Deoarece produsele sunt cu stoc limitat și aproape de data de expirare,
+                      returnările nu sunt posibile. Totuși, dacă există o
+                      problemă reală de calitate, te rugăm să ne contactezi pentru soluționare.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFour">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFour"
+                      aria-expanded="false"
+                      aria-controls="collapseFour"
+                    >
+                      Cine poate vinde pe platformă?
+                      <span class="icon">
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            width="32"
+                            height="32"
+                            rx="16"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M12.0001 16H20.0001M16.0001 12V20V12Z"
+                            stroke="#1A1A1A"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseFour"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingFour"
+                    data-bs-parent="#faq-accordion"
+                  >
+                    <div class="accordion-body">
+                      Orice magazin, patiserie sau producător local care are produse în surplus sau
+                      aproape de expirare poate deveni partener și lista produsele la preț redus.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 order-lg-0 order-2">
+            <div class="faq__img-wrapper">
+              <img
+                th:src="@{/images/banner-lg-009.jpg}"
+                style="margin-top: -1000px; margin-right: 700px;"
+                alt="banner"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cal-to-action Section Start -->
+    <div th:replace="~{/fragments/call-to-action :: callToActionSection}"></div>
+    <!-- Cal-to-action Section End -->
+
+    <!-- Footer Section Start -->
+    <div th:replace="~{/fragments/footer :: footer}"></div>
+    <!-- Footer Section End -->
+
+    <script th:src="@{/lib/js/jquery.min.js}"></script>
+    <script th:src="@{/lib/js/venobox.min.js}"></script>
+    <script th:src="@{/lib/js/swiper-bundle.min.js}"></script>
+    <script th:src="@{/lib/js/bvselect.js}"></script>
+    <script th:src="@{/lib/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/lib/js/jquery.syotimer.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/home.js}"></script>
+  </body>
+</html>
