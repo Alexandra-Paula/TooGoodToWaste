@@ -94,7 +94,7 @@ public class AccountSettingsController {
 
     /* ---------- GET ---------- */
 
-    @GetMapping
+    @GetMapping("/account-settings")
     public String getAccountSettingPage(Model model) {
         model.addAttribute("page", "account-setting");
         return "account-setting";
