@@ -106,7 +106,9 @@
                                             <div class="counter-btn-wrapper">
                                                 <button class="counter-btn-dec counter-btn" type="button"
                                                         onclick="decrement(this)"
-                                                        onblur="this.parentElement.querySelector('input[type=number]').dispatchEvent(new Event('blur'))">-</button>
+                                                        onblur="this.parentElement.querySelector('input[type=number]').dispatchEvent(new Event('blur'))">
+                                                    -
+                                                </button>
                                                 <input type="number"
                                                        class="counter-btn-counter"
                                                        name="quantity"
@@ -116,7 +118,9 @@
                                                        onblur="validateQuantity(this); this.form.submit();"/>
                                                 <button class="counter-btn-inc counter-btn" type="button"
                                                         onclick="increment(this)"
-                                                        onblur="this.parentElement.querySelector('input[type=number]').dispatchEvent(new Event('blur'))">+</button>
+                                                        onblur="this.parentElement.querySelector('input[type=number]').dispatchEvent(new Event('blur'))">
+                                                    +
+                                                </button>
                                             </div>
                                         </form>
                                     </td>
@@ -196,7 +200,7 @@
                                     <span class="font-body--xl-500" th:text="${cartTotal} + ' MDL'"></span>
                                 </div>
                             </div>
-                            <form action="#">
+                            <form th:action="@{/checkout}" method="get">
                                 <button
                                         class="button button--lg w-100"
                                         style="margin-top: 20px"
