@@ -80,6 +80,7 @@ public class CartServiceImpl implements CartService {
                     dto.setProductImage(item.getProduct().getProductImage());
                     dto.setProductId(item.getProduct().getId());
                     dto.setTotalQuantity(item.getProduct().getQuantity());
+                    dto.setUnit(item.getProduct().getUnit());
                     return dto;
                 }).collect(Collectors.toList()))
                 .orElseGet(ArrayList::new);
@@ -129,5 +130,16 @@ public class CartServiceImpl implements CartService {
                     return Math.round(total * 10.0) / 10.0;
                 })
                 .orElse(0.0);
+    }
+
+    @Override
+    public void clearCart(Long userId) {
+        Cart cart = cartRepository.findByUserId(userId)
+                .orElseThrow(() -> new RuntimeException("Coșul nu există pentru acest utilizator"));
+
+        cart.getItems().clear();
+
+        cart.setLastUpdated(LocalDateTime.now());
+        cartRepository.save(cart);
     }
 }
