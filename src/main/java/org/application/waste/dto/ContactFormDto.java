@@ -15,7 +15,12 @@ public class ContactFormDto {
 
     @NotBlank(message = "Emailul este obligatoriu")
     @Email(message = "Email invalid")
+    @Email(message = "Emailul trebuie să fie de forma nume@domeniu.tld")
     @Size(max = 150)
+    @jakarta.validation.constraints.Pattern(
+            regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
+            message = "Emailul trebuie să fie de forma nume@domeniu.tld"
+    )
     private String email;
 
     @NotBlank(message = "Titlul este obligatoriu")
@@ -23,6 +28,6 @@ public class ContactFormDto {
     private String title;
 
     @NotBlank(message = "Mesajul nu poate fi gol")
-    @Size(min = 10, max = 5000, message = "Mesajul trebuie să aibă minim 10 caractere")
+    @Size(min = 1, max = 5000, message = "Mesajul trebuie sa fie gol sau mai mare de 5000 de caractere")
     private String message;
 }

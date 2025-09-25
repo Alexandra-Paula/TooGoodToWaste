@@ -5965,6 +5965,58 @@ body.overlay::after {
     cursor: pointer;
 }
 
+:root{
+    --control-h: 56px;
+    --icon-pad-r: 44px;
+    --err-gap: 6px;
+    --err-fs: 12px;
+}
+
+
+.contact-form-input{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto var(--control-h) auto;
+    position: relative;
+}
+
+.contact-form-input > label{
+    grid-row: 1;
+}
+
+.contact-form-input input,
+.contact-form-input select,
+.contact-form-input textarea{
+    grid-row: 2;
+    height: var(--control-h);
+}
+
+
+.contact-form-input input[type="password"],
+.contact-form-input input[id*="password"]{
+    padding-right: var(--icon-pad-r);
+}
+
+.contact-form-input .icon{
+    grid-row: 2;
+    justify-self: end;
+    align-self: center;
+    margin-right: 16px;
+    line-height: 0;
+    cursor: pointer;
+}
+
+.contact-form-input .text-danger{
+    grid-row: 3;
+    margin-top: var(--err-gap);
+    font-size: var(--err-fs);
+    line-height: 1.25;
+}
+
+.contact-form__content-group{
+    align-items: flex-start;
+}
+
 .contact-form-input.filled input {
     color: #666666;
 }
@@ -12934,4 +12986,80 @@ body.overlay::after {
     100% {
         transform: rotate(0deg);
     }
+}
+
+:root{
+    /* Ajustează în funcție de înălțimea reală a inputurilor tale (52–56px de obicei) */
+    --control-h: 56px;   /* înălțimea câmpurilor text/parolă */
+    --icon-pad-r: 44px;  /* cât spațiu rezervăm în dreapta pentru „ochi” */
+    --err-gap: 6px;      /* spațiu între input și mesajul de eroare */
+    --err-fs: 12px;      /* mărimea fontului erorii */
+}
+
+/* Container standard de câmp */
+.contact-form-input{
+    position: relative;
+}
+
+/* Inputurile de parolă: rezervăm spațiu pentru iconiță, dar NU pentru eroare */
+.contact-form-input input[type="password"]{
+    height: var(--control-h);
+    line-height: calc(var(--control-h) - 2px);
+    padding-right: var(--icon-pad-r);
+}
+
+/* Iconița „ochi” – centrată după ÎNĂLȚIMEA INPUTULUI, nu după container */
+.contact-form-input .icon{
+    position: absolute;
+    right: 16px;
+    top: calc(var(--control-h) / 2);
+    transform: translateY(-50%);
+    line-height: 0;
+    cursor: pointer;
+}
+
+/* Mesajul de eroare: în fluxul normal (împinge DOAR ce e dedesubt) */
+.contact-form-input .text-danger{
+    display: block;
+    margin-top: var(--err-gap);
+    font-size: var(--err-fs);
+    line-height: 1.25;
+}
+
+/* În rândurile pe 2 coloane, aliniem la început ca să nu existe „sărituri” */
+.contact-form__content-group{
+    align-items: flex-start;
+}
+
+
+.avatar-uploader-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.avatar-uploader {
+    width: 220px;
+    text-align: center;
+}
+.avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    border: 2px solid #e5e7eb;
+    overflow: hidden;
+}
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* taie corect imaginea în cerc */
+    border-radius: 50%;
+    display: block;
+}
+.avatar-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+.avatar-actions .button {
+    min-width: 140px;
 }

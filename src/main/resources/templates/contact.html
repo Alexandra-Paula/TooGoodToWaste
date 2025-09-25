@@ -24,42 +24,33 @@
 <div th:replace="~{/fragments/shopping-cart-sidebar :: shoppingCartSidebar}"></div>
 <!-- Shopping Cart Sidebar End -->
 
-<!-- Header Section Start -->
-<div th:replace="~{/fragments/header :: header}"></div>
-<!-- Header Section End -->
 
-<!-- breedcrumb section start  -->
-<section class="section breedcrumb">
+<!-- Header Section start -->
+<div th:replace="~{/fragments/header :: header}"></div>
+<!-- Header  Section start -->
+
+<!-- Banner Section Start -->
+<div class="section breedcrumb">
   <div class="breedcrumb__img-wrapper">
-    <img src="/images/banner/breedcrumb.jpg" alt="breedcrumb" />
+    <img th:src="@{/images/banner/main-banner.jpg}" alt="breedcrumb"/>
     <div class="container">
       <ul class="breedcrumb__content">
         <li>
-          <a href="index.html">
-            <svg
-                    width="18"
-                    height="19"
-                    viewBox="0 0 18 19"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                      d="M1 8L9 1L17 8V18H12V14C12 13.2044 11.6839 12.4413 11.1213 11.8787C10.5587 11.3161 9.79565 11 9 11C8.20435 11 7.44129 11.3161 6.87868 11.8787C6.31607 12.4413 6 13.2044 6 14V18H1V8Z"
-                      stroke="#808080"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-              />
+          <a th:href="@{index}">
+            <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 8L9 1L17 8V18H12V14C12 13.2044 11.6839 12.4413 11.1213 11.8787C10.5587 11.3161 9.79565 11 9 11C8.20435 11 7.44129 11.3161 6.87868 11.8787C6.31607 12.4413 6 13.2044 6 14V18H1V8Z"
+                    stroke="#808080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span> > </span>
+            <span>></span>
           </a>
         </li>
-        <li class="active"><a href="faq.html">Contacte</a></li>
+        <li class="active"><a th:href="@{/shopping-cart}">Coș de cumpărături</a></li>
       </ul>
     </div>
   </div>
-</section>
-<!-- breedcrumb section end   -->
+</div>
+<!-- Banner Section End -->
+
 
 <!-- Contact section start  -->
 <section class="contact-form section section--xl">
@@ -74,8 +65,7 @@
                           height="51"
                           viewBox="0 0 52 51"
                           fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                  >
+                          xmlns="http://www.w3.org/2000/svg">
                     <path
                             d="M11.6562 46.2188H40.3438"
                             stroke="#2C742F"
@@ -108,8 +98,7 @@
                           height="51"
                           viewBox="0 0 52 51"
                           fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                  >
+                          xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0)">
                       <path
                               d="M48.95 5.9502H3.05C1.64172 5.9502 0.5 7.09182 0.5 8.5002V42.5002C0.5 43.9084 1.64162 45.0502 3.05 45.0502H48.95C50.3583 45.0502 51.5 43.9085 51.5 42.5002V8.5002C51.5 7.09192 50.3584 5.9502 48.95 5.9502ZM49.8 42.5003C49.8 42.9697 49.4195 43.3502 48.95 43.3502H3.05C2.58054 43.3502 2.20003 42.9697 2.20003 42.5003V8.5002C2.20003 8.03074 2.58054 7.65023 3.05 7.65023H48.95C49.4195 7.65023 49.8 8.03074 49.8 8.5002V42.5003Z"
@@ -140,7 +129,7 @@
                     </defs>
                   </svg>
                 </span>
-            <p>toogoodtogo@gmail.com</p>
+            <p>toogoodtowaste@gmail.com</p>
           </div>
           <div class="contact-form__contact-info--item">
                 <span class="icon">
@@ -149,8 +138,7 @@
                           height="51"
                           viewBox="0 0 52 51"
                           fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                  >
+                          xmlns="http://www.w3.org/2000/svg">
                     <path
                             d="M31.9829 7.24219C34.9249 8.03345 37.6074 9.58385 39.7616 11.7381C41.9159 13.8923 43.4663 16.5748 44.2575 19.5168"
                             stroke="#2C742F"
@@ -181,13 +169,11 @@
       <div class="col-lg-9">
         <div class="contact-form-card">
           <h2>Contactează-ne!</h2>
+
+          <!-- erori pentru lungimea mesajului -->
+          <div class="alert alert-danger" th:if="${param.error}" th:text="${param.error}"></div>
           <div class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></div>
-
-          <p>
-
-
-
-          </p>
+          <!-- erori pentru lungimea mesajului -->
 
           <form th:action="@{/contact/submit}" method="post" th:object="${contactDto}">
             <input type="hidden" th:if="${_csrf != null}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
@@ -228,8 +214,9 @@
             frameborder="0"
             scrolling="no"
             marginheight="0"
-            marginwidth="0"
-    ></iframe>
+            marginwidth="0">
+
+    </iframe>
     <a href="https://www.whatismyip-address.com"></a><br />
     <a href="https://www.embedgooglemap.net"></a>
   </div>
@@ -249,5 +236,6 @@
 <script src="/lib/js/bvselect.js"></script>
 <script src="/lib/js/bootstrap.bundle.min.js"></script>
 <script src="/js/main.js"></script>
+
 </body>
 </html>
