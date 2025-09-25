@@ -25,9 +25,13 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<Blog> findAllBlogs() {
-        return blogRepository.findAll();
+    public List<BlogDto> findAllBlogs() {
+        return blogRepository.findAll()
+                .stream()
+                .map(this::mapToDto)
+                .toList();
     }
+
 
     @Override
     public void saveBlog(BlogDto blogDto, String imageFile) {
@@ -36,8 +40,6 @@ public class BlogServiceImpl implements BlogService {
         blog.setContent(blogDto.getContent());
         blog.setImageUrl(imageFile);
         blog.setCreatedAt(LocalDateTime.now());
-
-
         blogRepository.save(blog);
     }
 
@@ -47,5 +49,15 @@ public class BlogServiceImpl implements BlogService {
             throw new IllegalArgumentException("Blog-ul cu ID-ul " + id + " nu există");
         }
         blogRepository.deleteById(id);
+    }
+
+    private BlogDto mapToDto(Blog blog) {
+        BlogDto dto = new BlogDto();
+        dto.setId(blog.getId());
+        dto.setTitle(blog.getTitle());
+        dto.setContent(blog.getContent());
+        dto.setImageUrl(blog.getImageUrl());
+        dto.setCreatedAt(blog.getCreatedAt());
+        return dto;
     }
 }
