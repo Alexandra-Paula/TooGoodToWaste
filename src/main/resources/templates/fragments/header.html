@@ -50,18 +50,15 @@
                         </select>
                     </div>
                     <div class="header__in">
-                        <!-- dacă nu ești autentificat -->
                         <span sec:authorize="!isAuthenticated()">
-        <a th:href="@{/login}">Autentificare</a>
-        <span>/</span>
-        <a th:href="@{/register}">Creare cont</a>
-    </span>
-
-                        <!-- dacă ești autentificat -->
+                            <a th:href="@{/login}">Autentificare</a>
+                            <span>/</span>
+                            <a th:href="@{/register}">Creare cont</a>
+                        </span>
                         <span sec:authorize="isAuthenticated()">
-        <span th:text="${#authentication.name}">Username</span> |
-        <a th:href="@{/logout}">Deconectare</a>
-    </span>
+                            <span th:text="${#authentication.name}">Username</span> |
+                            <a th:href="@{/logout}">Deconectare</a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -155,6 +152,9 @@
                     </li>
                     <li class="header__navigation-menu-link">
                         <a th:href="@{shop}">Magazin</a>
+                    </li>
+                    <li class="header__navigation-menu-link">
+                        <a th:href="@{/upload}">Import</a>
                     </li>
                     <li class="header__navigation-menu-link">
                         <a th:href="@{shop}">Categorii

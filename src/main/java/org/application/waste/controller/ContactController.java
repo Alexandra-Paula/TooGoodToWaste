@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequiredArgsConstructor
 public class ContactController {
-
     private final ContactService contactService;
     private final UserService userService;
 
@@ -59,7 +58,7 @@ public class ContactController {
         if (authentication != null && authentication.isAuthenticated()
                 && !"anonymousUser".equals(String.valueOf(authentication.getPrincipal()))) {
 
-            String principal = authentication.getName(); // de obicei username
+            String principal = authentication.getName();
             currentUser = userService.findByEmail(principal).orElseGet(() ->
                     userService.findByUsername(principal).orElse(null)
             );

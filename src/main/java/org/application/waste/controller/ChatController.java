@@ -1,11 +1,8 @@
 package org.application.waste.controller;
 
 import org.application.waste.security.CustomUserDetails;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.application.waste.entity.User;
@@ -15,21 +12,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.application.waste.repository.UserRepository;
 
-
-
 import java.util.HashMap;
 import java.util.Map;
 
 @Controller
 public class ChatController {
-
     private final AiService chatAiService;
     private final UserService userService;
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    public ChatController(AiService chatAiService, UserService userService) {
-
+    public ChatController(AiService chatAiService, UserService userService, UserRepository userRepository) {
+        this.userRepository = userRepository;
         this.chatAiService = chatAiService;
         this.userService = userService;
 
@@ -54,12 +47,11 @@ public class ChatController {
             model.addAttribute("userId", null);
         }
 
+        model.addAttribute("page", "chat");
+
         return "chat";
     }
-    private Long generateGuestId() {
-        // Generăm un ID unic pe baza timestamp-ului curent
-        return System.currentTimeMillis();
-    }
+
     @PostMapping("/chat/respond")
     public ResponseEntity<Map<String, Object>> respond(@RequestBody Map<String, Object> payload) {
         String message = (String) payload.get("message");
@@ -67,7 +59,6 @@ public class ChatController {
 
         Long userId = null;
 
-        // Dacă vine userId din frontend (numeric sau guest-xxx)
         if (userIdObj != null) {
             if (userIdObj instanceof Number) {
                 userId = ((Number) userIdObj).longValue();
@@ -77,24 +68,22 @@ public class ChatController {
                     if (!str.startsWith("guest-")) {
                         userId = Long.parseLong(str);
                         if (!userRepository.existsById(userId)) {
-                            userId = null; // fallback guest
+                            userId = null;
                         }
                     }
                 } catch (NumberFormatException ignored) {}
             }
         }
 
-        // Dacă user-ul e logat și userId e null
         if (userId == null) {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             if (auth != null && auth.isAuthenticated() &&
                     !(auth instanceof org.springframework.security.authentication.AnonymousAuthenticationToken)) {
                 CustomUserDetails principal = (CustomUserDetails) auth.getPrincipal();
-                userId = principal.getId(); // trebuie să existe getId() în CustomUserDetails
+                userId = principal.getId();
             }
         }
 
-        // Apelează service-ul, service-ul va salva în DB
         String aiResponse = chatAiService.getResponseAction(message, userId);
 
         Map<String, Object> responseMap = new HashMap<>();
@@ -103,8 +92,6 @@ public class ChatController {
 
         return ResponseEntity.ok(responseMap);
     }
-
-
 
     @PostMapping("/chat/delete")
     public String deleteChatHistory(Authentication authentication) {
@@ -124,6 +111,4 @@ public class ChatController {
 
         return "redirect:/chat?success=true";
     }
-
 }
-

@@ -442,8 +442,12 @@
                                     <p class="title-description"  th:text="${#temporals.format(product.productDiscount.expiryDate, 'dd MMM yyyy')}"></p>
                                 </li>
                                 <li>
-                                    <h5 class="title">Discount:</h5>
+                                    <h5 class="title">Reducere:</h5>
                                     <p class="title-description" th:text="${product.productDiscount.percent} + '%'"></p>
+                                </li>
+                                <li>
+                                    <h5 class="title">Adresa preluării:</h5>
+                                    <p class="title-description" th:text="${product.pickupAddress}"></p>
                                 </li>
                                 <li>
                                     <h5 class="title">Stoc:</h5>
@@ -455,7 +459,7 @@
                                     </p>
                                 </li>
                                 <li>
-                                    <h5 class="title">Tags:</h5>
+                                    <h5 class="title">Etichete:</h5>
                                     <div class="title-description title-description__tags">
                                         <div class="products__content-tags-item">
                                             <a th:href="@{/shop(tag='Alimente')}" class="tag-btn">Alimente</a>
