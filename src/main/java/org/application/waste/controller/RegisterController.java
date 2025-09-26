@@ -57,6 +57,6 @@ public class RegisterController {
         }
 
         userService.saveUser(userRegisterDto);
-        return "redirect:/index";
+        return "redirect:/login";
     }
 }
